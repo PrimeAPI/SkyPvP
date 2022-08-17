@@ -1,0 +1,9 @@
+name: SkyPvP
+version: ${project.version}
+author: PrimeAPI
+main: de.primeapi.primeplugins.skypvp.SkyPvP
+softdepend:
+  - PrimeCore
+commands:
+  skypvp:
+  test:
