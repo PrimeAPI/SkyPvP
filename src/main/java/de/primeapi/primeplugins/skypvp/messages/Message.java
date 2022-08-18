@@ -37,6 +37,9 @@ public enum Message {
 	EditItem_ItemInHand("§7 Du musst ein Item in der Hand halten!", true),
 
 	EditItem_SetItemName("§7 Du hast dein Item erfolgreich umbenannt!", true),
+
+	EnderChest_Open("§7 Du hast deine Enderchest geöffnet!", true),
+	EnderChest_Other("§7 Du hast die Enderchest von %player% geöffnet!", true),
 	PLACEHOLDER("DO NOT TOUCH", false);
 
 

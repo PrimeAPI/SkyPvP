@@ -51,7 +51,7 @@ public class SkyPvP extends JavaPlugin {
 		messageManager = new MessageManager();
 
 
-		CommandHandler.registerClass(this, MainCommand.class, FlyCommand.class, WorkbenchCommand.class, GamemodeCommand.class, TeleportCommand.class, TPHereCommand.class, HealCommand.class, FeedCommand.class, EditItemCommand.class);
+		CommandHandler.registerClass(this, MainCommand.class, FlyCommand.class, WorkbenchCommand.class, GamemodeCommand.class, TeleportCommand.class, TPHereCommand.class, HealCommand.class, FeedCommand.class, EditItemCommand.class, EnderchestCommand.class);
 
 
 	}

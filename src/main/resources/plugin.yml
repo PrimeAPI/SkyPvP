@@ -20,3 +20,6 @@ commands:
   heal:
   feed:
   edititem:
+  enderchest:
+    aliases:
+      - ec
