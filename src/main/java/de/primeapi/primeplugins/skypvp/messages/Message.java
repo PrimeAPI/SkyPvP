@@ -24,8 +24,20 @@ public enum Message {
 	TELEPORT_PP("§7 Der §eAdministrator: %staff% §7hat dich zu §e%tplayer% §7gebracht!", true),
 	TELEPORT_TT("§7 Der Spieler: §e%tpplayer% §7 wurde von §e%staff% §7 zu dir gebracht!", true),
 
-	TPHERE_DONE("§7 Der §eAdministrator: %staff% §7hat dich zu sich teleportiert!", true),
+	TPHERE_DONE("§e%staff% §7hat dich zu sich teleportiert!", true),
+
+	HEAL_PLAYER("§7 Du hast §edich §7erfolgreich geheilt!", true),
+	HEAL_OPLAYER("§7 Du hast §e%player% §7erfolreich geheilt", true),
+	HEAL_ME("§e%staff% §7hat dich geheilt!", true),
+
+	FEED_OPLAYER("§7 Du hast den Hunger §evon %player%§7 gestillt!", true),
+	FEED_ME("§7 Dein Hunger wurde von: %staff% gestillt!", true),
+	FEED_PLAYER("§7 Du hast §edeinen§7 Hunger gestillt!", true),
+
 	PLACEHOLDER("DO NOT TOUCH", false);
+
+
+
 
 	String path;
 	@Setter

@@ -17,3 +17,5 @@ commands:
     aliases:
       - tp
   tphere:
+  heal:
+  feed:
