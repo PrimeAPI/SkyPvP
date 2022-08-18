@@ -13,6 +13,16 @@ commands:
   gamemode:
     aliases:
       - gm
+  teleport:
+    aliases:
+      - tp
+  tphere:
+  heal:
+  feed:
+  edititem:
+  enderchest:
+    aliases:
+      - ec
   warp:
   spawn:
   plotworld:

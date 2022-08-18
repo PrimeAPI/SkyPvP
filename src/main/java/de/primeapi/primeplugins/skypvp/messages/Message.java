@@ -26,10 +26,33 @@ public enum Message {
 
 	WORKBENCH_OPEN("§7 Du hast eine §eWerkbank §7geöffnet", true),
 
+
+	TELEPORT_TP("§7 Du hast dich zu §e%spieler% §7teleportiert!", true),
+	TELEPORT_PP("§7 Der §eAdministrator: %staff% §7hat dich zu §e%tplayer% §7gebracht!", true),
+	TELEPORT_TT("§7 Der Spieler: §e%tpplayer% §7 wurde von §e%staff% §7 zu dir gebracht!", true),
+
 	NPC_DELETE("§7 Schlage nun den NPC den du entfernen möchtest!", true),
 
+	TPHERE_DONE("§e%staff% §7hat dich zu sich teleportiert!", true),
 
+	HEAL_PLAYER("§7 Du hast §edich §7erfolgreich geheilt!", true),
+	HEAL_OPLAYER("§7 Du hast §e%player% §7erfolreich geheilt", true),
+	HEAL_ME("§e%staff% §7hat dich geheilt!", true),
+
+	FEED_OPLAYER("§7 Du hast den Hunger §evon %player%§7 gestillt!", true),
+	FEED_ME("§7 Dein Hunger wurde von: %staff% gestillt!", true),
+	FEED_PLAYER("§7 Du hast §edeinen§7 Hunger gestillt!", true),
+
+	EditItem_ItemInHand("§7 Du musst ein Item in der Hand halten!", true),
+
+	EditItem_SetItemName("§7 Du hast dein Item erfolgreich umbenannt!", true),
+
+	EnderChest_Open("§7 Du hast deine Enderchest geöffnet!", true),
+	EnderChest_Other("§7 Du hast die Enderchest von %player% geöffnet!", true),
 	PLACEHOLDER("DO NOT TOUCH", false);
+
+
+
 
 	String path;
 	@Setter
