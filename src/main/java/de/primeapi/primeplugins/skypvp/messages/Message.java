@@ -14,6 +14,8 @@ public enum Message {
 	FLY_TOGGLE_OFF("§7 Du kannst nun nicht mehr §cfliegen§7!", true),
 	FLY_TOGGLE_OTHER("§7 Du hast den §eFlugmodus §7für §6%name% §7geändert!", true),
 
+	WORKBENCH_OPEN("§7 Du hast eine §eWerkbank §7geöffnet", true),
+
 
 	PLACEHOLDER("DO NOT TOUCH", false);
 
@@ -53,6 +55,6 @@ public enum Message {
 	}
 
 	public void send(PrimePlayer primePlayer){
-		send(primePlayer);
+		send(primePlayer.thePlayer());
 	}
 }

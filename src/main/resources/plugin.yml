@@ -7,3 +7,6 @@ softdepend:
 commands:
   skypvp:
   fly:
+  workbench:
+    aliases:
+      - wb
