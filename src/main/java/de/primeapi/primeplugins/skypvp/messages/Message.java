@@ -34,6 +34,9 @@ public enum Message {
 	FEED_ME("§7 Dein Hunger wurde von: %staff% gestillt!", true),
 	FEED_PLAYER("§7 Du hast §edeinen§7 Hunger gestillt!", true),
 
+	EditItem_ItemInHand("§7 Du musst ein Item in der Hand halten!", true),
+
+	EditItem_SetItemName("§7 Du hast dein Item erfolgreich umbenannt!", true),
 	PLACEHOLDER("DO NOT TOUCH", false);
 
 
