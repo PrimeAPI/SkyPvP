@@ -5,14 +5,12 @@ import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import de.primeapi.primeplugins.skypvp.api.annotations.GsonIgnore;
-import de.primeapi.primeplugins.skypvp.commands.FlyCommand;
-import de.primeapi.primeplugins.skypvp.commands.GamemodeCommand;
-import de.primeapi.primeplugins.skypvp.commands.MainCommand;
-import de.primeapi.primeplugins.skypvp.commands.WorkbenchCommand;
+import de.primeapi.primeplugins.skypvp.commands.*;
 import de.primeapi.primeplugins.skypvp.commands.warp.PlotWorldCommand;
 import de.primeapi.primeplugins.skypvp.commands.warp.SpawnCommand;
 import de.primeapi.primeplugins.skypvp.commands.warp.WarpCommand;
 import de.primeapi.primeplugins.skypvp.data.DataProvider;
+import de.primeapi.primeplugins.skypvp.managers.NPCManager;
 import de.primeapi.primeplugins.skypvp.messages.MessageManager;
 import de.primeapi.primeplugins.skypvp.util.ItemStackSerializer;
 import de.primeapi.primeplugins.skypvp.util.LocationSerializer;
@@ -39,6 +37,7 @@ public class SkyPvP extends JavaPlugin {
 	private Gson gson;
 	private MessageManager messageManager;
 	private DataProvider dataProvider;
+	private NPCManager npcManager;
 
 	public static SkyPvP getInstance() {
 		return instance;
@@ -76,10 +75,12 @@ public class SkyPvP extends JavaPlugin {
 		if (ord.exists()) ord.mkdir();
 		messageManager = new MessageManager();
 		dataProvider = new DataProvider();
+		npcManager = new NPCManager();
 
 
 		CommandHandler.registerClass(this, MainCommand.class, FlyCommand.class, WorkbenchCommand.class, GamemodeCommand.class,
-		                             WarpCommand.class, SpawnCommand.class, PlotWorldCommand.class
+		                             WarpCommand.class, SpawnCommand.class, PlotWorldCommand.class,
+		                             NPCCommand.class
 		                            );
 
 

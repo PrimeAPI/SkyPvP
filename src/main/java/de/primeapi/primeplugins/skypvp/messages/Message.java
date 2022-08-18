@@ -26,6 +26,8 @@ public enum Message {
 
 	WORKBENCH_OPEN("§7 Du hast eine §eWerkbank §7geöffnet", true),
 
+	NPC_DELETE("§7 Schlage nun den NPC den du entfernen möchtest!", true),
+
 
 	PLACEHOLDER("DO NOT TOUCH", false);
 
