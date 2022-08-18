@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Command(name = "edititem")
@@ -47,15 +48,20 @@ public class EditItemCommand {
         }
         ItemMeta meta = item.getItemMeta();
         List<String> list = meta.getLore();
+        if(list == null) list = new ArrayList<>();
         list.add(text.replace("&", "§"));
         meta.setLore(list);
         item.setItemMeta(meta);
-        player.sendMessage("123 It works!");
     }
-
-//    List<String> list = meta.getLore();
-//                list.add(name.replace("&", "§"));
-//        meta.setLore(list);
-    //Entfernen meta.setLore(new ArrayList<>());
-
+    @SubCommand(name = "lore reset", permission = "skypvp.edititem.resetlore")
+    public void removeLore(@SenderField Player player) {
+        ItemStack item = player.getItemInHand();
+        if (item == null || item.getType() == Material.AIR) {
+            Message.EditItem_ItemInHand.send(player);
+            return;
+        }
+        ItemMeta meta = item.getItemMeta();
+        meta.setLore(null);
+        item.setItemMeta(meta);
+    }
 }
