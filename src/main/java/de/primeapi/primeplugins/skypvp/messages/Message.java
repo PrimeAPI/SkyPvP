@@ -28,7 +28,7 @@ public enum Message {
 
 
 	TELEPORT_TP("§7 Du hast dich zu §e%spieler% §7teleportiert!", true),
-	TELEPORT_PP("§7 Der §eAdministrator: %staff% §7hat dich zu §e%tplayer% §7gebracht!", true),
+	TELEPORT_PP("§7 Du wurdest zu §e%tplayer% §7teleportiert!", true),
 	TELEPORT_TT("§7 Der Spieler: §e%tpplayer% §7 wurde von §e%staff% §7 zu dir gebracht!", true),
 
 	NPC_DELETE("§7 Schlage nun den NPC den du entfernen möchtest!", true),
