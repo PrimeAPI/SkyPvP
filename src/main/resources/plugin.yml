@@ -6,4 +6,4 @@ softdepend:
   - PrimeCore
 commands:
   skypvp:
-  test:
+  fly:

@@ -2,7 +2,10 @@ package de.primeapi.primeplugins.skypvp;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.sun.corba.se.pept.protocol.MessageMediator;
+import de.primeapi.primeplugins.skypvp.commands.FlyCommand;
 import de.primeapi.primeplugins.skypvp.commands.MainCommand;
+import de.primeapi.primeplugins.skypvp.messages.MessageManager;
 import de.primeapi.primeplugins.skypvp.util.ItemStackSerializer;
 import de.primeapi.primeplugins.spigotapi.api.command.reflections.CommandHandler;
 import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.Command;
@@ -33,6 +36,7 @@ public class SkyPvP extends JavaPlugin {
 
 	private static SkyPvP instance;
 	private Gson gson;
+	private MessageManager messageManager;
 
 	public static SkyPvP getInstance() {
 		return instance;
@@ -56,20 +60,10 @@ public class SkyPvP extends JavaPlugin {
 				.create();
 		File ord = new File("plugins/primeplugins/skypvp");
 		if (ord.exists()) ord.mkdir();
-		System.out.println("MainCommand.class.isAnnotationPresent(Command.class) = " + MainCommand.class.isAnnotationPresent(Command.class));
-		System.out.println("getClasses(MainCommand.class.getPackage().getName()).length = " + getClasses(MainCommand.class.getPackage().getName()).length);
+		messageManager = new MessageManager();
 
-		try {
-			Reflections reflections = new Reflections(MainCommand.class.getPackage().getName());
-			System.out.println("reflections.getAllTypes().size() = " + reflections.getAllTypes().size());
-			reflections.getAllTypes().forEach(s -> {
-				System.out.println("s = " + s);
-			});
-			System.out.println("reflections = " + reflections.getTypesAnnotatedWith(Command.class).size());
-			CommandHandler.loadCommands(this, MainCommand.class.getPackage().getName());
-		} catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException e) {
-			e.printStackTrace();
-		}
+
+		CommandHandler.registerClass(this, MainCommand.class, FlyCommand.class);
 
 
 	}
