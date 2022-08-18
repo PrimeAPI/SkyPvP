@@ -1,6 +1,8 @@
 package de.primeapi.primeplugins.skypvp.data.oop;
 
+import de.primeapi.primeplugins.skypvp.api.annotations.GsonIgnore;
 import de.primeapi.primeplugins.skypvp.data.DataProvider;
+import de.primeapi.primeplugins.skypvp.data.oop.subclasses.WarpStorage;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,6 +23,10 @@ public class Storage {
 	public Storage(){
 		instance = this;
 	}
+
+	WarpStorage warpStorage = new WarpStorage();
+
+
 
 
 }

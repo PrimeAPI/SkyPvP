@@ -32,8 +32,9 @@ public class DataProvider {
 		return instance;
 	}
 
-	public DataProvider(){
+	public DataProvider() throws IOException {
 		instance = this;
+		loadData();
 	}
 
 
