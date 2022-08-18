@@ -1,7 +1,7 @@
 package de.primeapi.primeplugins.skypvp.commands.warp;
 
 import de.primeapi.primeplugins.skypvp.data.DataProvider;
-import de.primeapi.primeplugins.skypvp.data.oop.subclasses.WarpPoint;
+import de.primeapi.primeplugins.skypvp.data.oop.subclasses.WarpStorage;
 import de.primeapi.primeplugins.skypvp.messages.Message;
 import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.Command;
 import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.SenderField;
@@ -21,7 +21,7 @@ public class PlotWorldCommand {
 			@SenderField Player player
 	                    ) {
 
-		WarpPoint warpPoint = DataProvider.getInstance().getStorage().getWarpStorage().getPlot();
+		WarpStorage.WarpPoint warpPoint = DataProvider.getInstance().getStorage().getWarpStorage().getPlot();
 		if (warpPoint == null) {
 			Message.WARP_404.send(player);
 			return;

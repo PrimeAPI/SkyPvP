@@ -2,7 +2,6 @@ package de.primeapi.primeplugins.skypvp.commands.warp;
 
 import de.primeapi.primeplugins.skypvp.SkyPvP;
 import de.primeapi.primeplugins.skypvp.data.DataProvider;
-import de.primeapi.primeplugins.skypvp.data.oop.subclasses.WarpPoint;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.WarpStorage;
 import de.primeapi.primeplugins.skypvp.messages.Message;
 import de.primeapi.primeplugins.skypvp.util.ItemStackSelector;
@@ -32,7 +31,7 @@ public class WarpCommand {
 	                    ) {
 
 		if (warpName == null) {
-			List<WarpPoint> warps = new ArrayList<>(WarpStorage.getInstance().getWarps());
+			List<WarpStorage.WarpPoint> warps = new ArrayList<>(WarpStorage.getInstance().getWarps());
 			warps.add(WarpStorage.getInstance().getPlot());
 			warps.add(WarpStorage.getInstance().getSpawn());
 			warps = warps.stream()
@@ -43,7 +42,7 @@ public class WarpCommand {
 			builder.fillInventory();
 			int i = 10;
 
-			for (WarpPoint warp : warps) {
+			for (WarpStorage.WarpPoint warp : warps) {
 				builder.addItem(
 						i, warp.getDisplay(), (player1, itemStack) -> Bukkit.getScheduler()
 						                                                    .runTask(
@@ -59,7 +58,7 @@ public class WarpCommand {
 			}
 			player.openInventory(builder.build(SkyPvP.getInstance()));
 		} else {
-			WarpPoint warpPoint = DataProvider.getInstance().getStorage().getWarpStorage().getWarp(warpName);
+			WarpStorage.WarpPoint warpPoint = DataProvider.getInstance().getStorage().getWarpStorage().getWarp(warpName);
 			if (warpPoint == null) {
 				Message.WARP_404.send(player);
 				return;
@@ -81,8 +80,8 @@ public class WarpCommand {
 
 
 		new ItemStackSelector(player, itemStack -> {
-			WarpPoint warpPoint = new WarpPoint(name.toLowerCase(), location, displayName.replace("&", "§"),
-			                                    itemStack
+			WarpStorage.WarpPoint warpPoint = new WarpStorage.WarpPoint(name.toLowerCase(), location, displayName.replace("&", "§"),
+			                                                            itemStack
 			);
 			switch (name.toLowerCase()) {
 				case "spawn":
@@ -122,7 +121,7 @@ public class WarpCommand {
 				break;
 			}
 			default: {
-				WarpPoint warpPoint = DataProvider.getInstance().getStorage().getWarpStorage().getWarp(name);
+				WarpStorage.WarpPoint warpPoint = DataProvider.getInstance().getStorage().getWarpStorage().getWarp(name);
 				if (warpPoint == null) {
 					Message.WARP_404.send(player);
 					return;

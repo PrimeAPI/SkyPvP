@@ -1,12 +1,12 @@
 package de.primeapi.primeplugins.skypvp.data.oop.subclasses;
 
 import de.primeapi.primeplugins.skypvp.api.annotations.GsonIgnore;
-import de.primeapi.primeplugins.skypvp.data.oop.Storage;
 import lombok.Data;
+import org.bukkit.Location;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * @author Lukas S. PrimeAPI
@@ -54,4 +54,18 @@ public class WarpStorage {
 		}
 	}
 
+	/**
+	 * @author Lukas S. PrimeAPI
+	 * created on 18.08.2022
+	 * crated for PrimePlugins-ROOT
+	 */
+	@Data
+	public static class WarpPoint {
+
+		final String name;
+		final Location location;
+		final String displayname;
+		final ItemStack display;
+
+	}
 }
