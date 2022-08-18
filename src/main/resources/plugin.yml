@@ -23,3 +23,7 @@ commands:
   enderchest:
     aliases:
       - ec
+  warp:
+  spawn:
+  plotworld:
+  npc:
