@@ -20,7 +20,11 @@ public enum Message {
 
 	WORKBENCH_OPEN("§7 Du hast eine §eWerkbank §7geöffnet", true),
 
+	TELEPORT_TP("§7 Du hast dich zu §e%spieler% §7teleportiert!", true),
+	TELEPORT_PP("§7 Der §eAdministrator: %staff% §7hat dich zu §e%tplayer% §7gebracht!", true),
+	TELEPORT_TT("§7 Der Spieler: §e%tpplayer% §7 wurde von §e%staff% §7 zu dir gebracht!", true),
 
+	TPHERE_DONE("§7 Der §eAdministrator: %staff% §7hat dich zu sich teleportiert!", true),
 	PLACEHOLDER("DO NOT TOUCH", false);
 
 	String path;

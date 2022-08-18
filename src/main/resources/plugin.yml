@@ -13,3 +13,7 @@ commands:
   gamemode:
     aliases:
       - gm
+  teleport:
+    aliases:
+      - tp
+  tphere:
