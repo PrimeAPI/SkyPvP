@@ -2,29 +2,18 @@ package de.primeapi.primeplugins.skypvp;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.sun.corba.se.pept.protocol.MessageMediator;
 import de.primeapi.primeplugins.skypvp.commands.FlyCommand;
 import de.primeapi.primeplugins.skypvp.commands.MainCommand;
 import de.primeapi.primeplugins.skypvp.commands.WorkbenchCommand;
 import de.primeapi.primeplugins.skypvp.messages.MessageManager;
 import de.primeapi.primeplugins.skypvp.util.ItemStackSerializer;
 import de.primeapi.primeplugins.spigotapi.api.command.reflections.CommandHandler;
-import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.Command;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.reflections.Reflections;
-import org.reflections.scanners.Scanners;
 
 import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Scanner;
 import java.util.logging.Level;
 
 /**
