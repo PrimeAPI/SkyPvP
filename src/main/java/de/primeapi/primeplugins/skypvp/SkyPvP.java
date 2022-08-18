@@ -3,6 +3,7 @@ package de.primeapi.primeplugins.skypvp;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import de.primeapi.primeplugins.skypvp.commands.FlyCommand;
+import de.primeapi.primeplugins.skypvp.commands.GamemodeCommand;
 import de.primeapi.primeplugins.skypvp.commands.MainCommand;
 import de.primeapi.primeplugins.skypvp.commands.WorkbenchCommand;
 import de.primeapi.primeplugins.skypvp.messages.MessageManager;
@@ -53,7 +54,7 @@ public class SkyPvP extends JavaPlugin {
 		messageManager = new MessageManager();
 
 
-		CommandHandler.registerClass(this, MainCommand.class, FlyCommand.class, WorkbenchCommand.class);
+		CommandHandler.registerClass(this, MainCommand.class, FlyCommand.class, WorkbenchCommand.class, GamemodeCommand.class);
 
 
 	}
