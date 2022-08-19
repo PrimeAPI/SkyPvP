@@ -13,6 +13,8 @@ import de.primeapi.primeplugins.skypvp.commands.warp.PlotWorldCommand;
 import de.primeapi.primeplugins.skypvp.commands.warp.SpawnCommand;
 import de.primeapi.primeplugins.skypvp.commands.warp.WarpCommand;
 import de.primeapi.primeplugins.skypvp.data.DataProvider;
+import de.primeapi.primeplugins.skypvp.listeners.JoinListener;
+import de.primeapi.primeplugins.skypvp.listeners.QuitListener;
 import de.primeapi.primeplugins.skypvp.managers.NPCManager;
 
 import de.primeapi.primeplugins.skypvp.messages.MessageManager;
@@ -21,6 +23,7 @@ import de.primeapi.primeplugins.skypvp.util.LocationSerializer;
 import de.primeapi.primeplugins.spigotapi.api.command.reflections.CommandHandler;
 import lombok.Getter;
 import lombok.SneakyThrows;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -86,6 +89,8 @@ public class SkyPvP extends JavaPlugin {
 		                             WarpCommand.class, SpawnCommand.class, PlotWorldCommand.class,
 		                             NPCCommand.class, TeleportCommand.class, TPHereCommand.class, HealCommand.class, FeedCommand.class, EditItemCommand.class, EnderchestCommand.class
 		                            );
+		Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
+		Bukkit.getPluginManager().registerEvents(new QuitListener(), this);
 
 
 
