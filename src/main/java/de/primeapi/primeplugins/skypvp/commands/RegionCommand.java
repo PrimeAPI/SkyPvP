@@ -6,7 +6,6 @@ import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.Co
 import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.SenderField;
 import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.SubCommand;
 import org.bukkit.entity.Player;
-import org.bukkit.event.player.PlayerQuitEvent;
 
 /**
  * @author Lukas S. PrimeAPI
@@ -17,35 +16,35 @@ import org.bukkit.event.player.PlayerQuitEvent;
 public class RegionCommand {
 
 	@SubCommand(name = "info")
-	public void list(@SenderField Player player){
-		if(RegionStorage.getInstance().isPvP(player.getLocation())){
+	public void list(@SenderField Player player) {
+		if (RegionStorage.getInstance().isPvP(player.getLocation())) {
 			Message.REGION_COMMAND_INFO_MESSAGE.replace("name", "PvP").send(player);
-		}else if(RegionStorage.getInstance().isPlot(player.getLocation())) {
+		} else if (RegionStorage.getInstance().isPlot(player.getLocation())) {
 			Message.REGION_COMMAND_INFO_MESSAGE.replace("name", "Plot").send(player);
-		}else if(RegionStorage.getInstance().isFarm(player.getLocation())) {
+		} else if (RegionStorage.getInstance().isFarm(player.getLocation())) {
 			Message.REGION_COMMAND_INFO_MESSAGE.replace("name", "Farm").send(player);
-		}else {
+		} else {
 			Message.REGION_COMMAND_INFO_404.send(player);
 		}
 	}
 
 	@SubCommand(name = "add plot")
-	public void addPlot(@SenderField Player player){
+	public void addPlot(@SenderField Player player) {
 		RegionStorage.getInstance().addPlot(player.getLocation());
 		Message.REGION_COMMAND_ADD.replace("name", "Plot").send(player);
 	}
+
 	@SubCommand(name = "add farm")
-	public void addFarm(@SenderField Player player){
+	public void addFarm(@SenderField Player player) {
 		RegionStorage.getInstance().addFarm(player.getLocation());
 		Message.REGION_COMMAND_ADD.replace("name", "Farm").send(player);
 	}
+
 	@SubCommand(name = "add pvp")
-	public void addPvP(@SenderField Player player){
+	public void addPvP(@SenderField Player player) {
 		RegionStorage.getInstance().addPvP(player.getLocation());
 		Message.REGION_COMMAND_ADD.replace("name", "PvP").send(player);
 	}
-
-
 
 
 }

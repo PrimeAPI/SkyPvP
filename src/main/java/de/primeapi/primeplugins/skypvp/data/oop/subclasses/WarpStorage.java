@@ -17,39 +17,39 @@ import java.util.List;
 public class WarpStorage {
 	@GsonIgnore
 	private static WarpStorage instance;
+	WarpPoint spawn;
+	WarpPoint plot;
+	List<WarpPoint> warps = new ArrayList<>();
+	public WarpStorage() {
+		instance = this;
+	}
 
 	public static WarpStorage getInstance() {
 		return instance;
 	}
 
-	public WarpStorage(){
-		instance = this;
-	}
-
-
-	WarpPoint spawn;
-	WarpPoint plot;
-	List<WarpPoint> warps = new ArrayList<>();
-
-
-	public void addWarp(WarpPoint warpPoint){
+	public void addWarp(WarpPoint warpPoint) {
 		warps.add(warpPoint);
 	}
-	public void removeWarp(WarpPoint warpPoint){
+
+	public void removeWarp(WarpPoint warpPoint) {
 		warps.remove(warpPoint);
 	}
 
-	public WarpPoint getWarp(String name){
-		switch (name.toLowerCase()){
-			case "spawn":{
+	public WarpPoint getWarp(String name) {
+		switch (name.toLowerCase()) {
+			case "spawn": {
 				return spawn;
 			}
 			case "plot":
-			case "plotworld":{
+			case "plotworld": {
 				return plot;
 			}
-			default:{
-				return warps.stream().filter(warpPoint -> warpPoint.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
+			default: {
+				return warps.stream()
+				            .filter(warpPoint -> warpPoint.getName().equalsIgnoreCase(name))
+				            .findFirst()
+				            .orElse(null);
 			}
 		}
 	}

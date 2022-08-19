@@ -9,11 +9,14 @@ import org.bukkit.entity.Player;
 
 @Command(name = "tphere", permission = "skypvp.tphere")
 public class TPHereCommand {
-    @SubCommand(name = "<player>")
+	@SubCommand(name = "<player>")
 
-    public void tpHere (@SenderField Player primePlayer, @SingleAttribute(name = "player", required = true) Player target) {
+	public void tpHere(
+			@SenderField Player primePlayer,
+			@SingleAttribute(name = "player", required = true) Player target
+	                  ) {
 
-        target.teleport(primePlayer);
-        Message.TPHERE_DONE.replace("staff", primePlayer.getName()).send(target);
-    }
+		target.teleport(primePlayer);
+		Message.TPHERE_DONE.replace("staff", primePlayer.getName()).send(target);
+	}
 }

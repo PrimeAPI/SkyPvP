@@ -3,9 +3,6 @@ package de.primeapi.primeplugins.skypvp.sql.stats;
 import de.primeapi.primeplugins.spigotapi.PrimeCore;
 import de.primeapi.primeplugins.spigotapi.api.cache.Cache;
 import de.primeapi.util.sql.queries.Retriever;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -156,12 +153,10 @@ public class StatsAdapter {
 	}
 
 
-
 	public enum StatsEntry {
 		KILL,
 		DEATH
 	}
-
 
 
 }

@@ -27,9 +27,11 @@ import java.util.Optional;
  */
 public class ItemStackSerializer implements JsonSerializer<ItemStack>, JsonDeserializer<ItemStack> {
 	private static final String[] BYPASS_CLASS = {"CraftMetaBlockState", "CraftMetaItem"
-			/*Glowstone Support*/ ,"GlowMetaItem"};
+			/*Glowstone Support*/, "GlowMetaItem"};
+
 	@Override
-	public ItemStack deserialize(JsonElement element, Type typee, JsonDeserializationContext context) throws JsonParseException {
+	public ItemStack deserialize(JsonElement element, Type typee, JsonDeserializationContext context) throws
+			JsonParseException {
 
 		if (element.isJsonObject()) {
 			JsonObject itemJson = element.getAsJsonObject();
@@ -127,7 +129,9 @@ public class ItemStackSerializer implements JsonSerializer<ItemStack>, JsonDeser
 								if (baseColorElement != null && baseColorElement.isJsonPrimitive()) {
 									try {
 										Optional<DyeColor> color = Arrays.stream(DyeColor.values())
-										                                 .filter(dyeColor -> dyeColor.name().equalsIgnoreCase(baseColorElement.getAsString()))
+										                                 .filter(dyeColor -> dyeColor.name()
+										                                                             .equalsIgnoreCase(
+												                                                             baseColorElement.getAsString()))
 										                                 .findFirst();
 										if (color.isPresent()) {
 											bmeta.setBaseColor(color.get());
@@ -143,7 +147,9 @@ public class ItemStackSerializer implements JsonSerializer<ItemStack>, JsonDeser
 										if (patternString.contains(":")) {
 											String[] splitPattern = patternString.split(":");
 											Optional<DyeColor> color = Arrays.stream(DyeColor.values())
-											                                 .filter(dyeColor -> dyeColor.name().equalsIgnoreCase(splitPattern[0]))
+											                                 .filter(dyeColor -> dyeColor.name()
+											                                                             .equalsIgnoreCase(
+													                                                             splitPattern[0]))
 											                                 .findFirst();
 											PatternType patternType = PatternType.getByIdentifier(splitPattern[1]);
 											if (color.isPresent() && patternType != null) {
@@ -180,7 +186,8 @@ public class ItemStackSerializer implements JsonSerializer<ItemStack>, JsonDeser
 								if (colorElement != null && colorElement.isJsonPrimitive()) {
 									LeatherArmorMeta lameta = (LeatherArmorMeta) meta;
 									try {
-										lameta.setColor(Color.fromRGB(Integer.parseInt(colorElement.getAsString(), 16)));
+										lameta.setColor(
+												Color.fromRGB(Integer.parseInt(colorElement.getAsString(), 16)));
 									} catch (NumberFormatException ex) {
 									}
 								}
@@ -216,11 +223,15 @@ public class ItemStackSerializer implements JsonSerializer<ItemStack>, JsonDeser
 											if (enchantString.contains(":")) {
 												try {
 													String[] splitPotions = enchantString.split(":");
-													PotionEffectType potionType = PotionEffectType.getByName(splitPotions[0]);
+													PotionEffectType potionType = PotionEffectType.getByName(
+															splitPotions[0]);
 													int amplifier = Integer.parseInt(splitPotions[1]);
 													int duration = Integer.parseInt(splitPotions[2]) * 20;
 													if (potionType != null) {
-														pmeta.addCustomEffect(new PotionEffect(potionType, amplifier, duration), true);
+														pmeta.addCustomEffect(
+																new PotionEffect(potionType, amplifier, duration),
+																true
+														                     );
 													}
 												} catch (NumberFormatException ex) {
 												}
@@ -238,29 +249,38 @@ public class ItemStackSerializer implements JsonSerializer<ItemStack>, JsonDeser
 								if (effectTypeElement != null && effectTypeElement.isJsonPrimitive()) {
 									FireworkEffectMeta femeta = (FireworkEffectMeta) meta;
 
-									FireworkEffect.Type effectType = FireworkEffect.Type.valueOf(effectTypeElement.getAsString());
+									FireworkEffect.Type effectType = FireworkEffect.Type.valueOf(
+											effectTypeElement.getAsString());
 
 									if (effectType != null) {
 										List<Color> colors = new ArrayList<>();
-										if (colorsElement != null && colorsElement.isJsonArray())
+										if (colorsElement != null && colorsElement.isJsonArray()) {
 											colorsElement.getAsJsonArray().forEach(colorElement -> {
-												if (colorElement.isJsonPrimitive())
-													colors.add(Color.fromRGB(Integer.parseInt(colorElement.getAsString(), 16)));
+												if (colorElement.isJsonPrimitive()) {
+													colors.add(Color.fromRGB(
+															Integer.parseInt(colorElement.getAsString(), 16)));
+												}
 											});
+										}
 
 										List<Color> fadeColors = new ArrayList<>();
-										if (fadeColorsElement != null && fadeColorsElement.isJsonArray())
+										if (fadeColorsElement != null && fadeColorsElement.isJsonArray()) {
 											fadeColorsElement.getAsJsonArray().forEach(colorElement -> {
-												if (colorElement.isJsonPrimitive())
-													fadeColors.add(Color.fromRGB(Integer.parseInt(colorElement.getAsString(), 16)));
+												if (colorElement.isJsonPrimitive()) {
+													fadeColors.add(Color.fromRGB(
+															Integer.parseInt(colorElement.getAsString(), 16)));
+												}
 											});
+										}
 
 										FireworkEffect.Builder builder = FireworkEffect.builder().with(effectType);
 
-										if (flickerElement != null && flickerElement.isJsonPrimitive())
+										if (flickerElement != null && flickerElement.isJsonPrimitive()) {
 											builder.flicker(flickerElement.getAsBoolean());
-										if (trailElement != null && trailElement.isJsonPrimitive())
+										}
+										if (trailElement != null && trailElement.isJsonPrimitive()) {
 											builder.trail(trailElement.getAsBoolean());
+										}
 
 										if (!colors.isEmpty()) builder.withColor(colors);
 										if (!fadeColors.isEmpty()) builder.withFade(fadeColors);
@@ -293,29 +313,45 @@ public class ItemStackSerializer implements JsonSerializer<ItemStack>, JsonDeser
 
 											if (effectTypeElement != null && effectTypeElement.isJsonPrimitive()) {
 
-												FireworkEffect.Type effectType = FireworkEffect.Type.valueOf(effectTypeElement.getAsString());
+												FireworkEffect.Type effectType = FireworkEffect.Type.valueOf(
+														effectTypeElement.getAsString());
 
 												if (effectType != null) {
 													List<Color> colors = new ArrayList<>();
-													if (colorsElement != null && colorsElement.isJsonArray())
+													if (colorsElement != null && colorsElement.isJsonArray()) {
 														colorsElement.getAsJsonArray().forEach(colorElement -> {
-															if (colorElement.isJsonPrimitive())
-																colors.add(Color.fromRGB(Integer.parseInt(colorElement.getAsString(), 16)));
+															if (colorElement.isJsonPrimitive()) {
+																colors.add(Color.fromRGB(
+																		Integer.parseInt(
+																				colorElement.getAsString(),
+																				16
+																		                )));
+															}
 														});
+													}
 
 													List<Color> fadeColors = new ArrayList<>();
-													if (fadeColorsElement != null && fadeColorsElement.isJsonArray())
+													if (fadeColorsElement != null && fadeColorsElement.isJsonArray()) {
 														fadeColorsElement.getAsJsonArray().forEach(colorElement -> {
-															if (colorElement.isJsonPrimitive())
-																fadeColors.add(Color.fromRGB(Integer.parseInt(colorElement.getAsString(), 16)));
+															if (colorElement.isJsonPrimitive()) {
+																fadeColors.add(Color.fromRGB(
+																		Integer.parseInt(
+																				colorElement.getAsString(),
+																				16
+																		                )));
+															}
 														});
+													}
 
-													FireworkEffect.Builder builder = FireworkEffect.builder().with(effectType);
+													FireworkEffect.Builder builder = FireworkEffect.builder()
+													                                               .with(effectType);
 
-													if (flickerElement != null && flickerElement.isJsonPrimitive())
+													if (flickerElement != null && flickerElement.isJsonPrimitive()) {
 														builder.flicker(flickerElement.getAsBoolean());
-													if (trailElement != null && trailElement.isJsonPrimitive())
+													}
+													if (trailElement != null && trailElement.isJsonPrimitive()) {
 														builder.trail(trailElement.getAsBoolean());
+													}
 
 													if (!colors.isEmpty()) builder.withColor(colors);
 													if (!fadeColors.isEmpty()) builder.withFade(fadeColors);
@@ -349,8 +385,8 @@ public class ItemStackSerializer implements JsonSerializer<ItemStack>, JsonDeser
 					itemStack.setItemMeta(meta);
 				}
 				return itemStack;
-			} else return null;
-		} else return null;
+			} else {return null;}
+		} else {return null;}
 	}
 
 	@Override
@@ -482,14 +518,16 @@ public class ItemStackSerializer implements JsonSerializer<ItemStack>, JsonDeser
 					if (!effect.getColors().isEmpty()) {
 						JsonArray colors = new JsonArray();
 						effect.getColors().forEach(color ->
-								                           colors.add(new JsonPrimitive(Integer.toHexString(color.asRGB()))));
+								                           colors.add(new JsonPrimitive(
+										                           Integer.toHexString(color.asRGB()))));
 						extraMeta.add("colors", colors);
 					}
 
 					if (!effect.getFadeColors().isEmpty()) {
 						JsonArray fadeColors = new JsonArray();
 						effect.getFadeColors().forEach(color ->
-								                               fadeColors.add(new JsonPrimitive(Integer.toHexString(color.asRGB()))));
+								                               fadeColors.add(new JsonPrimitive(
+										                               Integer.toHexString(color.asRGB()))));
 						extraMeta.add("fade-colors", fadeColors);
 					}
 
@@ -514,14 +552,16 @@ public class ItemStackSerializer implements JsonSerializer<ItemStack>, JsonDeser
 						if (!effect.getColors().isEmpty()) {
 							JsonArray colors = new JsonArray();
 							effect.getColors().forEach(color ->
-									                           colors.add(new JsonPrimitive(Integer.toHexString(color.asRGB()))));
+									                           colors.add(new JsonPrimitive(
+											                           Integer.toHexString(color.asRGB()))));
 							jsonObject.add("colors", colors);
 						}
 
 						if (!effect.getFadeColors().isEmpty()) {
 							JsonArray fadeColors = new JsonArray();
 							effect.getFadeColors().forEach(color ->
-									                               fadeColors.add(new JsonPrimitive(Integer.toHexString(color.asRGB()))));
+									                               fadeColors.add(new JsonPrimitive(
+											                               Integer.toHexString(color.asRGB()))));
 							jsonObject.add("fade-colors", fadeColors);
 						}
 

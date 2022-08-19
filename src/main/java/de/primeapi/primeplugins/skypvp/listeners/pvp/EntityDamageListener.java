@@ -1,7 +1,5 @@
 package de.primeapi.primeplugins.skypvp.listeners.pvp;
 
-import de.primeapi.primeplugins.skypvp.data.oop.subclasses.RegionStorage;
-import org.bukkit.Location;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;

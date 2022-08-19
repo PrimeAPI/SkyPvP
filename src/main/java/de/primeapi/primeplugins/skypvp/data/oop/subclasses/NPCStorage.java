@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bukkit.Location;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,27 +19,27 @@ import java.util.UUID;
 public class NPCStorage {
 	@GsonIgnore
 	private static NPCStorage instance;
+	List<NPCEntry> npcs = new ArrayList<>();
+
+	public NPCStorage() {
+		instance = this;
+	}
 
 	public static NPCStorage getInstance() {
 		return instance;
 	}
 
-	public NPCStorage(){
-		instance = this;
-	}
-
-
-
-	List<NPCEntry> npcs = new ArrayList<>();
-
-	public void addNPC(NPCEntry entry){
+	public void addNPC(NPCEntry entry) {
 		npcs.add(entry);
 	}
-	public void removeNPC(NPCEntry entry){
+
+	public void removeNPC(NPCEntry entry) {
 		npcs.remove(entry);
 	}
 
-	@Data @NoArgsConstructor @AllArgsConstructor
+	@Data
+	@NoArgsConstructor
+	@AllArgsConstructor
 	public static class NPCEntry {
 		UUID profile;
 		String name;

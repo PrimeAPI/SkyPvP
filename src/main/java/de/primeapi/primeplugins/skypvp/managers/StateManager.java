@@ -12,15 +12,14 @@ import java.util.List;
  */
 public class StateManager {
 
-	private static List<Player> buildMode = new ArrayList<>();
+	private static final List<Player> buildMode = new ArrayList<>();
 
-	public static boolean isBuildMode(Player player){
+	public static boolean isBuildMode(Player player) {
 		return buildMode.contains(player);
 	}
 
-	public static void setBuildMode(Player player, boolean b){
-		if(b && !isBuildMode(player)) buildMode.add(player);
-		else buildMode.remove(player);
+	public static void setBuildMode(Player player, boolean b) {
+		if (b && !isBuildMode(player)) {buildMode.add(player);} else buildMode.remove(player);
 	}
 
 }

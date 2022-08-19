@@ -32,7 +32,7 @@ public class WarpCommand {
 	                    ) {
 
 		int sec = CombatManager.remainingSeconds(player);
-		if(sec > 0){
+		if (sec > 0) {
 			Message.COMBAT_REMAINING.replace("sec", sec).send(player);
 			return;
 		}
@@ -64,7 +64,10 @@ public class WarpCommand {
 			}
 			player.openInventory(builder.build(SkyPvP.getInstance()));
 		} else {
-			WarpStorage.WarpPoint warpPoint = DataProvider.getInstance().getStorage().getWarpStorage().getWarp(warpName);
+			WarpStorage.WarpPoint warpPoint = DataProvider.getInstance()
+			                                              .getStorage()
+			                                              .getWarpStorage()
+			                                              .getWarp(warpName);
 			if (warpPoint == null) {
 				Message.WARP_404.send(player);
 				return;
@@ -86,7 +89,8 @@ public class WarpCommand {
 
 
 		new ItemStackSelector(player, itemStack -> {
-			WarpStorage.WarpPoint warpPoint = new WarpStorage.WarpPoint(name.toLowerCase(), location, displayName.replace("&", "§"),
+			WarpStorage.WarpPoint warpPoint = new WarpStorage.WarpPoint(name.toLowerCase(), location,
+			                                                            displayName.replace("&", "§"),
 			                                                            itemStack
 			);
 			switch (name.toLowerCase()) {
@@ -127,7 +131,10 @@ public class WarpCommand {
 				break;
 			}
 			default: {
-				WarpStorage.WarpPoint warpPoint = DataProvider.getInstance().getStorage().getWarpStorage().getWarp(name);
+				WarpStorage.WarpPoint warpPoint = DataProvider.getInstance()
+				                                              .getStorage()
+				                                              .getWarpStorage()
+				                                              .getWarp(name);
 				if (warpPoint == null) {
 					Message.WARP_404.send(player);
 					return;

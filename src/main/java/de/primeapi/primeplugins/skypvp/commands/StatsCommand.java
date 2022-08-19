@@ -16,10 +16,11 @@ import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import static de.primeapi.primeplugins.skypvp.messages.Message.*;
-import static de.primeapi.primeplugins.skypvp.sql.stats.StatsAdapter.*;
 
 import java.util.concurrent.TimeUnit;
+
+import static de.primeapi.primeplugins.skypvp.messages.Message.*;
+import static de.primeapi.primeplugins.skypvp.sql.stats.StatsAdapter.*;
 
 /**
  * @author Lukas S. PrimeAPI
@@ -30,15 +31,18 @@ import java.util.concurrent.TimeUnit;
 public class StatsCommand {
 
 	@SubCommand(name = "<player>")
-	public void onCommand(@SenderField PrimePlayer player, @SingleAttribute(name = "player", required = false) String name){
-		if(name == null){
+	public void onCommand(
+			@SenderField PrimePlayer player,
+			@SingleAttribute(name = "player", required = false) String name
+	                     ) {
+		if (name == null) {
 			openStatsPlayer(player.thePlayer(), player, Time.ALLTIME);
-		}else {
+		} else {
 			SQLPlayer.loadPlayerByName(name).submit(sqlPlayer -> {
-				if(sqlPlayer == null){
+				if (sqlPlayer == null) {
 					STATS_ERROR_NOTFOUND.send(player);
 					player.thePlayer().playSound(player.thePlayer().getLocation(), Sound.NOTE_BASS, 1, 1);
-				}else {
+				} else {
 					openStatsPlayer(player.thePlayer(), sqlPlayer, Time.ALLTIME);
 				}
 			});
@@ -49,8 +53,10 @@ public class StatsCommand {
 	public void openStatsPlayer(Player p, SQLPlayer target, Time time) {
 		target.retrieveUniqueId().submit(uuid -> {
 			String title = STATS_GUI_TITLE_BASE
-					.replace("type", STATS_GUI_TITLE_TYPE_PLAYER.replace("player",
-					                                                     target.retrieveRealName().complete())
+					.replace("type", STATS_GUI_TITLE_TYPE_PLAYER.replace(
+							                                            "player",
+							                                            target.retrieveRealName().complete()
+					                                                    )
 					                                            .getContent())
 					.replace("time", time.getName())
 					.getContent();
@@ -64,7 +70,8 @@ public class StatsCommand {
 					new ItemBuilder(Material.SKULL_ITEM, (byte) 3)
 							.setSkullOwner(target.retrieveRealName().complete())
 							.setDisplayName(String.valueOf(
-									STATS_GUI_PLAYER_RANK.replace("rank", getRank(uuid, time.toTime()).complete()).getContent()))
+									STATS_GUI_PLAYER_RANK.replace("rank", getRank(uuid, time.toTime()).complete())
+									                     .getContent()))
 							.build()
 			                  );
 			guiBuilder.addItem(
@@ -141,8 +148,10 @@ public class StatsCommand {
 		//Glass-Panes
 		{
 			for (int i = 0; i < 9; i++) {
-				builder.addItem(i,
-				                new ItemBuilder(Material.STAINED_GLASS_PANE, (byte) 15).setDisplayName(" ").build());
+				builder.addItem(
+						i,
+						new ItemBuilder(Material.STAINED_GLASS_PANE, (byte) 15).setDisplayName(" ").build()
+				               );
 			}
 			builder.addItem(10, new ItemBuilder(Material.STAINED_GLASS_PANE, (byte) 15).setDisplayName(" ").build());
 			builder.addItem(19, new ItemBuilder(Material.STAINED_GLASS_PANE, (byte) 15).setDisplayName(" ").build());
@@ -152,8 +161,10 @@ public class StatsCommand {
 			builder.addItem(25, new ItemBuilder(Material.STAINED_GLASS_PANE, (byte) 15).setDisplayName(" ").build());
 			builder.addItem(34, new ItemBuilder(Material.STAINED_GLASS_PANE, (byte) 15).setDisplayName(" ").build());
 			for (int i = 36; i < 45; i++) {
-				builder.addItem(i,
-				                new ItemBuilder(Material.STAINED_GLASS_PANE, (byte) 15).setDisplayName(" ").build());
+				builder.addItem(
+						i,
+						new ItemBuilder(Material.STAINED_GLASS_PANE, (byte) 15).setDisplayName(" ").build()
+				               );
 			}
 		}
 		//Time
@@ -191,7 +202,11 @@ public class StatsCommand {
 							.build(),
 					(player, itemStack) -> {
 						player.closeInventory();
-						if (fromList) {openTopList(player, Time.WEEK);} else openStatsPlayer(player, target, Time.WEEK);
+						if (fromList) {openTopList(player, Time.WEEK);} else {
+							openStatsPlayer(player, target,
+							                Time.WEEK
+							               );
+						}
 					}
 			               );
 		}
@@ -250,8 +265,10 @@ public class StatsCommand {
 			}
 		});
 
-		anvilGUI.setSlot(AnvilGUI.AnvilSlot.INPUT_LEFT,
-		                 new ItemBuilder(Material.NAME_TAG).setDisplayName(" ").build());
+		anvilGUI.setSlot(
+				AnvilGUI.AnvilSlot.INPUT_LEFT,
+				new ItemBuilder(Material.NAME_TAG).setDisplayName(" ").build()
+		                );
 		anvilGUI.open();
 	}
 

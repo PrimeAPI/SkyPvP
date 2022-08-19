@@ -1,11 +1,9 @@
 package de.primeapi.primeplugins.skypvp.data;
 
-import com.google.gson.Gson;
 import de.primeapi.primeplugins.skypvp.SkyPvP;
 import de.primeapi.primeplugins.skypvp.data.oop.Storage;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.NPCStorage;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.RegionStorage;
-import lombok.Data;
 import lombok.Getter;
 
 import java.io.File;
@@ -15,8 +13,6 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Arrays;
-import java.util.Objects;
 
 /**
  * @author Lukas S. PrimeAPI
@@ -25,37 +21,34 @@ import java.util.Objects;
  */
 @Getter
 public class DataProvider {
-	private final String PATH = "plugins/primeplugins/skypvp/storage.json";
-
 	private static DataProvider instance;
+	private final String PATH = "plugins/primeplugins/skypvp/storage.json";
 	private Storage storage;
-
-	public static DataProvider getInstance() {
-		return instance;
-	}
 
 	public DataProvider() throws IOException {
 		instance = this;
 		loadData();
 	}
 
+	public static DataProvider getInstance() {
+		return instance;
+	}
 
 	/**
 	 * Loads all crates stored in the folder
 	 */
 	private void loadData() throws IOException {
 		File file = new File(PATH);
-		if(file.createNewFile()){
+		if (file.createNewFile()) {
 			this.storage = new Storage();
 			save();
-		}else {
+		} else {
 			String json = new String(Files.readAllBytes(Paths.get(file.getPath())), StandardCharsets.UTF_8);
 			storage = SkyPvP.getInstance().getGson().fromJson(json, Storage.class);
 		}
-		if(storage.getNpcStorage() == null) storage.setNpcStorage(new NPCStorage());
-		if(storage.getRegionStorage() == null) storage.setRegionStorage(new RegionStorage());
+		if (storage.getNpcStorage() == null) storage.setNpcStorage(new NPCStorage());
+		if (storage.getRegionStorage() == null) storage.setRegionStorage(new RegionStorage());
 	}
-
 
 
 	public void save() throws IOException {

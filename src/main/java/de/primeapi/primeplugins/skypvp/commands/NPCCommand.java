@@ -6,7 +6,6 @@ import de.primeapi.primeplugins.skypvp.data.oop.subclasses.NPCStorage;
 import de.primeapi.primeplugins.skypvp.managers.NPCManager;
 import de.primeapi.primeplugins.skypvp.messages.Message;
 import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.*;
-import de.primeapi.primeplugins.spigotapi.enums.PlayerSetting;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
@@ -43,6 +42,7 @@ public class NPCCommand {
 			e.printStackTrace();
 		}
 	}
+
 	@SubCommand(name = "delete")
 	public void spawn(
 			@SenderField Player player

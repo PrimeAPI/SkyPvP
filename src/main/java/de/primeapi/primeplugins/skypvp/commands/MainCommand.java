@@ -17,7 +17,7 @@ public class MainCommand {
 	}
 
 	@SubCommand(name = "")
-	public void execute(Player player){
+	public void execute(Player player) {
 		player.sendMessage("§9§lSkyPvP");
 	}
 }

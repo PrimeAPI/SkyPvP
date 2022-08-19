@@ -17,12 +17,12 @@ import org.bukkit.entity.Player;
 public class BuildCommand {
 
 	@SubCommand(name = "")
-	public void toggle(@SenderField Player player){
-		if(StateManager.isBuildMode(player)){
+	public void toggle(@SenderField Player player) {
+		if (StateManager.isBuildMode(player)) {
 			StateManager.setBuildMode(player, false);
 			player.setGameMode(GameMode.SURVIVAL);
 			Message.BUILD_OFF.send(player);
-		}else {
+		} else {
 			StateManager.setBuildMode(player, true);
 			player.setGameMode(GameMode.CREATIVE);
 			Message.BUILD_ON.send(player);

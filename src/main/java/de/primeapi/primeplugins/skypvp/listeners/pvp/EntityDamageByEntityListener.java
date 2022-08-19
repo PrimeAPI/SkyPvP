@@ -17,11 +17,11 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 public class EntityDamageByEntityListener implements Listener {
 
 	@EventHandler
-	public void onPlayerDamage(EntityDamageByEntityEvent event){
-		if(event.getEntity() instanceof Player){
+	public void onPlayerDamage(EntityDamageByEntityEvent event) {
+		if (event.getEntity() instanceof Player) {
 			CombatManager.registerHit((Player) event.getEntity());
 		}
-		if(event.getDamager() instanceof Player){
+		if (event.getDamager() instanceof Player) {
 			CombatManager.registerHit((Player) event.getDamager());
 		}
 		Location location = RegionStorage.getInstance()
@@ -34,17 +34,17 @@ public class EntityDamageByEntityListener implements Listener {
 		                                 .findFirst()
 		                                 .orElse(null);
 		Player damager = null;
-		if(event.getDamager() instanceof Player){
+		if (event.getDamager() instanceof Player) {
 			damager = (Player) event.getDamager();
 		}
 		boolean v;
-		if(location == null ){
+		if (location == null) {
 			v = true;
-		}else {
+		} else {
 			v = event.getEntity().getLocation().getY() > location.getY();
 		}
-		if(RegionStorage.getInstance().isPlot(event.getEntity().getLocation())) v = true;
-		if(damager != null && StateManager.isBuildMode(damager)){
+		if (RegionStorage.getInstance().isPlot(event.getEntity().getLocation())) v = true;
+		if (damager != null && StateManager.isBuildMode(damager)) {
 			v = false;
 		}
 

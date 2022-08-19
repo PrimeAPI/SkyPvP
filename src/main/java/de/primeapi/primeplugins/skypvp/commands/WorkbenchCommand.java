@@ -15,11 +15,10 @@ import org.bukkit.entity.Player;
 public class WorkbenchCommand {
 
 
-
 	@SubCommand(name = "")
-	public void openWorkbench(@SenderField Player player){
+	public void openWorkbench(@SenderField Player player) {
 		Message.WORKBENCH_OPEN.send(player);
-		player.openWorkbench(null,true);
+		player.openWorkbench(null, true);
 	}
 
 }

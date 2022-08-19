@@ -20,14 +20,14 @@ public class PlayerDeathListener implements Listener {
 
 
 	@EventHandler
-	public void onPlayerDeath(PlayerDeathEvent event){
+	public void onPlayerDeath(PlayerDeathEvent event) {
 		Player player = event.getEntity();
 		StatsAdapter.addStatsEntry(player.getUniqueId(), StatsAdapter.StatsEntry.DEATH, 1);
 		CombatManager.reset(player);
 
-		if(player.getKiller() == null){
+		if (player.getKiller() == null) {
 			Message.PVP_DEATH_PLAYER_NOKILLER.send(player);
-		}else {
+		} else {
 			Player killer = player.getKiller();
 			StatsAdapter.addStatsEntry(killer.getUniqueId(), StatsAdapter.StatsEntry.KILL, 1);
 			CoinsAPI.getInstance().addCoins(killer.getUniqueId(), 50);
@@ -42,7 +42,6 @@ public class PlayerDeathListener implements Listener {
 	public void onPlayerRespawn(PlayerRespawnEvent event) {
 		event.setRespawnLocation(WarpStorage.getInstance().getSpawn().getLocation());
 	}
-
 
 
 }

@@ -13,27 +13,26 @@ import java.util.concurrent.TimeUnit;
  */
 public class CombatManager {
 
-	private static HashMap<UUID, Long> lastHit = new HashMap<>();
-
 	private static final Integer cooldown = 60;
+	private static final HashMap<UUID, Long> lastHit = new HashMap<>();
 
-	public static void registerHit(Player player){
+	public static void registerHit(Player player) {
 		lastHit.put(player.getUniqueId(), System.currentTimeMillis());
 	}
 
-	public static void reset(Player player){
+	public static void reset(Player player) {
 		lastHit.remove(player.getUniqueId());
 	}
 
-	public static boolean isInFight(Player player){
-		if(!lastHit.containsKey(player.getUniqueId())) return false;
+	public static boolean isInFight(Player player) {
+		if (!lastHit.containsKey(player.getUniqueId())) return false;
 		return lastHit.get(player.getUniqueId()) + TimeUnit.SECONDS.toMillis(60) > System.currentTimeMillis();
 	}
 
-	public static int remainingSeconds(Player player){
-		if(!lastHit.containsKey(player.getUniqueId())) return 0;
+	public static int remainingSeconds(Player player) {
+		if (!lastHit.containsKey(player.getUniqueId())) return 0;
 		long diff = (lastHit.get(player.getUniqueId()) + TimeUnit.SECONDS.toMillis(60)) - System.currentTimeMillis();
-		return ((Long)TimeUnit.MILLISECONDS.toSeconds(diff)).intValue();
+		return ((Long) TimeUnit.MILLISECONDS.toSeconds(diff)).intValue();
 	}
 
 

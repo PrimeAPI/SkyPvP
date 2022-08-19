@@ -95,8 +95,6 @@ public enum Message {
 	PLACEHOLDER("DO NOT TOUCH", false);
 
 
-
-
 	String path;
 	@Setter
 	String content;
@@ -128,11 +126,11 @@ public enum Message {
 		return replace(key, String.valueOf(value));
 	}
 
-	public void send(Player player){
+	public void send(Player player) {
 		player.sendMessage(getContent());
 	}
 
-	public void send(PrimePlayer primePlayer){
+	public void send(PrimePlayer primePlayer) {
 		send(primePlayer.thePlayer());
 	}
 }

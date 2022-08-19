@@ -1,4 +1,5 @@
 package de.primeapi.primeplugins.skypvp.util;
+
 import de.primeapi.primeplugins.skypvp.SkyPvP;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -16,13 +17,13 @@ import java.util.Objects;
  * crated for PrimePlugins-ROOT
  */
 public class ItemStackSelector {
-	private Listener listener;
+	private final Listener listener;
 
-	public ItemStackSelector(Player player, SelectionHandler handler){
+	public ItemStackSelector(Player player, SelectionHandler handler) {
 		this.listener = new Listener() {
 			@EventHandler
 			public void onInventoryClick(InventoryClickEvent e) {
-				if(Objects.isNull(e.getCurrentItem())) return;
+				if (Objects.isNull(e.getCurrentItem())) return;
 				e.setCancelled(true);
 				handler.selected(e.getCurrentItem());
 				HandlerList.unregisterAll(listener);

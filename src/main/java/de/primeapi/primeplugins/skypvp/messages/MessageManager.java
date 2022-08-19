@@ -35,8 +35,9 @@ public class MessageManager {
 					String s = (message.getPrefix() ? "%prefix%" : "") + message.getContent().replaceAll("§", "&");
 					cfg.set(message.getPath(), s);
 					i++;
-					message.setContent(ChatColor.translateAlternateColorCodes('&', s.replaceAll("%prefix%",
-					                                                                            Message.PREFIX.getContent()
+					message.setContent(ChatColor.translateAlternateColorCodes('&', s.replaceAll(
+							"%prefix%",
+							Message.PREFIX.getContent()
 					                                                                           )));
 				}
 			}

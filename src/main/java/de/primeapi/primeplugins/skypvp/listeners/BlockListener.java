@@ -6,7 +6,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
-import sun.jvm.hotspot.gc.g1.HeapRegionManager;
 
 /**
  * @author Lukas S. PrimeAPI
@@ -16,9 +15,9 @@ import sun.jvm.hotspot.gc.g1.HeapRegionManager;
 public class BlockListener implements Listener {
 
 	@EventHandler
-	public void onBreak(BlockBreakEvent event){
-		if(RegionStorage.getInstance().isPvP(event.getBlock().getLocation())){
-			if(!StateManager.isBuildMode(event.getPlayer())){
+	public void onBreak(BlockBreakEvent event) {
+		if (RegionStorage.getInstance().isPvP(event.getBlock().getLocation())) {
+			if (!StateManager.isBuildMode(event.getPlayer())) {
 				event.setCancelled(true);
 			}
 		}
@@ -26,9 +25,9 @@ public class BlockListener implements Listener {
 	}
 
 	@EventHandler
-	public void onPlace(BlockPlaceEvent event){
-		if(RegionStorage.getInstance().isPvP(event.getBlock().getLocation())){
-			if(!StateManager.isBuildMode(event.getPlayer())){
+	public void onPlace(BlockPlaceEvent event) {
+		if (RegionStorage.getInstance().isPvP(event.getBlock().getLocation())) {
+			if (!StateManager.isBuildMode(event.getPlayer())) {
 				event.setCancelled(true);
 			}
 		}

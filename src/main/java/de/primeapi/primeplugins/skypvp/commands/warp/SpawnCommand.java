@@ -28,7 +28,7 @@ public class SpawnCommand {
 			return;
 		}
 		int sec = CombatManager.remainingSeconds(player);
-		if(sec > 0){
+		if (sec > 0) {
 			Message.COMBAT_REMAINING.replace("sec", sec).send(player);
 			return;
 		}
