@@ -6,6 +6,7 @@ import com.github.juliarn.npc.event.PlayerNPCInteractEvent;
 import com.github.juliarn.npc.profile.Profile;
 import de.primeapi.primeplugins.skypvp.SkyPvP;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.NPCStorage;
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,6 +18,7 @@ import java.util.*;
  * created on 18.08.2022
  * crated for SkyPvP
  */
+@Getter
 public class NPCManager {
 
 	public static List<UUID> deleter = new ArrayList<>();
