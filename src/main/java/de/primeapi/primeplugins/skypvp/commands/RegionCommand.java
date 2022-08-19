@@ -35,13 +35,13 @@ public class RegionCommand {
 		Message.REGION_COMMAND_ADD.replace("name", "Plot").send(player);
 	}
 	@SubCommand(name = "add farm")
-	public void addPvP(@SenderField Player player){
-		RegionStorage.getInstance().addPvP(player.getLocation());
+	public void addFarm(@SenderField Player player){
+		RegionStorage.getInstance().addFarm(player.getLocation());
 		Message.REGION_COMMAND_ADD.replace("name", "Farm").send(player);
 	}
 	@SubCommand(name = "add pvp")
-	public void addFarm(@SenderField Player player){
-		RegionStorage.getInstance().addFarm(player.getLocation());
+	public void addPvP(@SenderField Player player){
+		RegionStorage.getInstance().addPvP(player.getLocation());
 		Message.REGION_COMMAND_ADD.replace("name", "PvP").send(player);
 	}
 

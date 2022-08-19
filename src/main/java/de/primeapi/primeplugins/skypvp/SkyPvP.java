@@ -13,6 +13,9 @@ import de.primeapi.primeplugins.skypvp.data.DataProvider;
 import de.primeapi.primeplugins.skypvp.listeners.BlockListener;
 import de.primeapi.primeplugins.skypvp.listeners.JoinListener;
 import de.primeapi.primeplugins.skypvp.listeners.QuitListener;
+import de.primeapi.primeplugins.skypvp.listeners.pvp.EntityDamageByEntityListener;
+import de.primeapi.primeplugins.skypvp.listeners.pvp.EntityDamageListener;
+import de.primeapi.primeplugins.skypvp.listeners.pvp.PlayerDeathListener;
 import de.primeapi.primeplugins.skypvp.managers.NPCManager;
 import de.primeapi.primeplugins.skypvp.messages.MessageManager;
 import de.primeapi.primeplugins.skypvp.util.ItemStackSerializer;
@@ -92,6 +95,9 @@ public class SkyPvP extends JavaPlugin {
 		Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
 		Bukkit.getPluginManager().registerEvents(new QuitListener(), this);
 		Bukkit.getPluginManager().registerEvents(new BlockListener(), this);
+		Bukkit.getPluginManager().registerEvents(new EntityDamageListener(), this);
+		Bukkit.getPluginManager().registerEvents(new EntityDamageByEntityListener(), this);
+		Bukkit.getPluginManager().registerEvents(new PlayerDeathListener(), this);
 
 
 	}
