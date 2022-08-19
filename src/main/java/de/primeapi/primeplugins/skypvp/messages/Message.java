@@ -89,6 +89,8 @@ public enum Message {
 	STATS_GUI_PLAYER_BLOCKS("§7Platzierte Blöcke §8» §e%int%", false),
 	STATS_GUI_PLAYER_KD("§7K/D §8» §e%int%", false),
 
+	COMBAT_REMAINING("§7 Du bist noch für §e%sec% Sekunden §7im Kampf!", true),
+
 
 	PLACEHOLDER("DO NOT TOUCH", false);
 

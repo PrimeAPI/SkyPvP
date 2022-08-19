@@ -1,6 +1,7 @@
 package de.primeapi.primeplugins.skypvp.listeners.pvp;
 
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.WarpStorage;
+import de.primeapi.primeplugins.skypvp.managers.CombatManager;
 import de.primeapi.primeplugins.skypvp.messages.Message;
 import de.primeapi.primeplugins.skypvp.sql.stats.StatsAdapter;
 import de.primeapi.primeplugins.spigotapi.api.plugins.coins.CoinsAPI;
@@ -22,6 +23,7 @@ public class PlayerDeathListener implements Listener {
 	public void onPlayerDeath(PlayerDeathEvent event){
 		Player player = event.getEntity();
 		StatsAdapter.addStatsEntry(player.getUniqueId(), StatsAdapter.StatsEntry.DEATH, 1);
+		CombatManager.reset(player);
 
 		if(player.getKiller() == null){
 			Message.PVP_DEATH_PLAYER_NOKILLER.send(player);

@@ -2,6 +2,7 @@ package de.primeapi.primeplugins.skypvp.commands.warp;
 
 import de.primeapi.primeplugins.skypvp.data.DataProvider;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.WarpStorage;
+import de.primeapi.primeplugins.skypvp.managers.CombatManager;
 import de.primeapi.primeplugins.skypvp.messages.Message;
 import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.Command;
 import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.SenderField;
@@ -24,6 +25,11 @@ public class PlotWorldCommand {
 		WarpStorage.WarpPoint warpPoint = DataProvider.getInstance().getStorage().getWarpStorage().getPlot();
 		if (warpPoint == null) {
 			Message.WARP_404.send(player);
+			return;
+		}
+		int sec = CombatManager.remainingSeconds(player);
+		if(sec > 0){
+			Message.COMBAT_REMAINING.replace("sec", sec).send(player);
 			return;
 		}
 		player.teleport(warpPoint.getLocation());

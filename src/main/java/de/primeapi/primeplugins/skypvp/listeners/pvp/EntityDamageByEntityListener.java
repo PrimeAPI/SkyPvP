@@ -1,6 +1,7 @@
 package de.primeapi.primeplugins.skypvp.listeners.pvp;
 
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.RegionStorage;
+import de.primeapi.primeplugins.skypvp.managers.CombatManager;
 import de.primeapi.primeplugins.skypvp.managers.StateManager;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -17,6 +18,12 @@ public class EntityDamageByEntityListener implements Listener {
 
 	@EventHandler
 	public void onPlayerDamage(EntityDamageByEntityEvent event){
+		if(event.getEntity() instanceof Player){
+			CombatManager.registerHit((Player) event.getEntity());
+		}
+		if(event.getDamager() instanceof Player){
+			CombatManager.registerHit((Player) event.getDamager());
+		}
 		Location location = RegionStorage.getInstance()
 		                                 .getPvp()
 		                                 .stream()

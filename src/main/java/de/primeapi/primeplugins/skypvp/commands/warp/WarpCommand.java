@@ -3,6 +3,7 @@ package de.primeapi.primeplugins.skypvp.commands.warp;
 import de.primeapi.primeplugins.skypvp.SkyPvP;
 import de.primeapi.primeplugins.skypvp.data.DataProvider;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.WarpStorage;
+import de.primeapi.primeplugins.skypvp.managers.CombatManager;
 import de.primeapi.primeplugins.skypvp.messages.Message;
 import de.primeapi.primeplugins.skypvp.util.ItemStackSelector;
 import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.*;
@@ -30,6 +31,11 @@ public class WarpCommand {
 			@SingleAttribute(name = "warpname", required = false) String warpName
 	                    ) {
 
+		int sec = CombatManager.remainingSeconds(player);
+		if(sec > 0){
+			Message.COMBAT_REMAINING.replace("sec", sec).send(player);
+			return;
+		}
 		if (warpName == null) {
 			List<WarpStorage.WarpPoint> warps = new ArrayList<>(WarpStorage.getInstance().getWarps());
 			warps.add(WarpStorage.getInstance().getPlot());
