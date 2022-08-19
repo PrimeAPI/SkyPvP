@@ -20,6 +20,7 @@ import de.primeapi.primeplugins.skypvp.managers.NPCManager;
 import de.primeapi.primeplugins.skypvp.messages.MessageManager;
 import de.primeapi.primeplugins.skypvp.util.ItemStackSerializer;
 import de.primeapi.primeplugins.skypvp.util.LocationSerializer;
+import de.primeapi.primeplugins.skypvp.util.SkyPvPScoreboard;
 import de.primeapi.primeplugins.spigotapi.PrimeCore;
 import de.primeapi.primeplugins.spigotapi.api.command.reflections.CommandHandler;
 import lombok.Getter;
@@ -110,6 +111,8 @@ public class SkyPvP extends JavaPlugin {
 						"PRIMARY KEY (`id`)" +
 						");"
 		                                      ).execute();
+
+		PrimeCore.getInstance().getScoreboardManager().defaultSettings = new SkyPvPScoreboard();
 
 
 	}
