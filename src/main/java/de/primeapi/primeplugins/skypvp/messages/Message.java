@@ -49,6 +49,14 @@ public enum Message {
 
 	EnderChest_Open("§7 Du hast deine Enderchest geöffnet!", true),
 	EnderChest_Other("§7 Du hast die Enderchest von %player% geöffnet!", true),
+
+	REGION_COMMAND_ADD("§7 Du hast diese Welt erfolgreich als §e%name% Region §7gesetzt!", true),
+	REGION_COMMAND_INFO_MESSAGE("§7 Diese Welt ist als §e%name% Region §7gesetzt!", true),
+	REGION_COMMAND_INFO_404("§c Diese Welt wurde noch nicht gesetzt!", true),
+
+	BUILD_ON("§7 Du kannst nun §abauen§7!", true),
+	BUILD_OFF("§7 Du kannst nun nicht mehr §cbauen§7!", true),
+
 	PLACEHOLDER("DO NOT TOUCH", false);
 
 

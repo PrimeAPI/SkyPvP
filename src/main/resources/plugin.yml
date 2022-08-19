@@ -27,3 +27,5 @@ commands:
   spawn:
   plotworld:
   npc:
+  region:
+  build:

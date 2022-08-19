@@ -4,19 +4,16 @@ import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import de.primeapi.primeplugins.skypvp.commands.*;
-
 import de.primeapi.primeplugins.skypvp.api.annotations.GsonIgnore;
 import de.primeapi.primeplugins.skypvp.commands.*;
 import de.primeapi.primeplugins.skypvp.commands.warp.PlotWorldCommand;
 import de.primeapi.primeplugins.skypvp.commands.warp.SpawnCommand;
 import de.primeapi.primeplugins.skypvp.commands.warp.WarpCommand;
 import de.primeapi.primeplugins.skypvp.data.DataProvider;
+import de.primeapi.primeplugins.skypvp.listeners.BlockListener;
 import de.primeapi.primeplugins.skypvp.listeners.JoinListener;
 import de.primeapi.primeplugins.skypvp.listeners.QuitListener;
 import de.primeapi.primeplugins.skypvp.managers.NPCManager;
-
 import de.primeapi.primeplugins.skypvp.messages.MessageManager;
 import de.primeapi.primeplugins.skypvp.util.ItemStackSerializer;
 import de.primeapi.primeplugins.skypvp.util.LocationSerializer;
@@ -85,13 +82,16 @@ public class SkyPvP extends JavaPlugin {
 		npcManager = new NPCManager();
 
 
-		CommandHandler.registerClass(this, MainCommand.class, FlyCommand.class, WorkbenchCommand.class, GamemodeCommand.class,
+		CommandHandler.registerClass(this, MainCommand.class, FlyCommand.class, WorkbenchCommand.class,
+		                             GamemodeCommand.class,
 		                             WarpCommand.class, SpawnCommand.class, PlotWorldCommand.class,
-		                             NPCCommand.class, TeleportCommand.class, TPHereCommand.class, HealCommand.class, FeedCommand.class, EditItemCommand.class, EnderchestCommand.class
+		                             NPCCommand.class, TeleportCommand.class, TPHereCommand.class, HealCommand.class,
+		                             FeedCommand.class, EditItemCommand.class, EnderchestCommand.class,
+		                             RegionCommand.class, BuildCommand.class
 		                            );
 		Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
 		Bukkit.getPluginManager().registerEvents(new QuitListener(), this);
-
+		Bukkit.getPluginManager().registerEvents(new BlockListener(), this);
 
 
 	}

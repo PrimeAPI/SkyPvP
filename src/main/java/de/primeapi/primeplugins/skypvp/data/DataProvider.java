@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import de.primeapi.primeplugins.skypvp.SkyPvP;
 import de.primeapi.primeplugins.skypvp.data.oop.Storage;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.NPCStorage;
+import de.primeapi.primeplugins.skypvp.data.oop.subclasses.RegionStorage;
 import lombok.Data;
 import lombok.Getter;
 
@@ -52,7 +53,7 @@ public class DataProvider {
 			storage = SkyPvP.getInstance().getGson().fromJson(json, Storage.class);
 		}
 		if(storage.getNpcStorage() == null) storage.setNpcStorage(new NPCStorage());
-
+		if(storage.getRegionStorage() == null) storage.setRegionStorage(new RegionStorage());
 	}
 
 
