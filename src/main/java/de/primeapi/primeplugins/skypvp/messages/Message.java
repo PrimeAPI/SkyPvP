@@ -57,6 +57,39 @@ public enum Message {
 	BUILD_ON("§7 Du kannst nun §abauen§7!", true),
 	BUILD_OFF("§7 Du kannst nun nicht mehr §cbauen§7!", true),
 
+	PVP_DEATH_PLAYER_NOKILLER("§7 Du bist §cgestorben§7!", true),
+	PVP_DEATH_PLAYER_KILLER("§7 Du wurdest von §e%name% §7getötet§7!", true),
+	PVP_DEATH_KILLER("§7 Du hast §e%name%§a getötet§7! §8[§6+50 Coins§8]", true),
+
+	STATS_ERROR_NOTFOUND("§c Der angegebene Spieler wurde nicht gefunden!", true),
+
+
+	STATS_GUI_TITLE_BASE("§6§lStats §8| %type% §8| §e%time%", false),
+	STATS_GUI_TITLE_TYPE_PLAYER("§e%player%", false),
+	STATS_GUI_TITLE_TYPE_TOP("§eBestenlite", false),
+	STATS_GUI_TITLE_TIME_ALLTIME("§eAlltime", false),
+	STATS_GUI_TITLE_TIME_WEEKLY("§eWöchentlich", false),
+	STATS_GUI_TITLE_TIME_MONTHLY("§eMonatlich", false),
+
+	STATS_GUI_TIME_ALLTIME("§eAlltime", false),
+	STATS_GUI_TIME_WEEKLY("§eWöchentlich", false),
+	STATS_GUI_TIME_MONTHLY("§eMonatlich", false),
+
+	STATS_GUI_TYPE_SELF("§eEigene Statistiken", false),
+	STATS_GUI_TYPE_SEARCH("§eSuche Spieler", false),
+	STATS_GUI_TYPE_LIST("§eBestenliste", false),
+
+	STATS_LIST_NAME("§e%name%", false),
+	STATS_LIST_LORE_1("§7Kills §8» §e%int%", false),
+	STATS_LIST_LORE_2("§7K/D §8» §e%int%", false),
+
+	STATS_GUI_PLAYER_RANK("§7Rang §8» §e#%rank%", false),
+	STATS_GUI_PLAYER_KILL("§7Kills §8» §e%int%", false),
+	STATS_GUI_PLAYER_DEATH("§7Tode §8» §e%int%", false),
+	STATS_GUI_PLAYER_BLOCKS("§7Platzierte Blöcke §8» §e%int%", false),
+	STATS_GUI_PLAYER_KD("§7K/D §8» §e%int%", false),
+
+
 	PLACEHOLDER("DO NOT TOUCH", false);
 
 

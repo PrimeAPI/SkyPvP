@@ -20,6 +20,7 @@ import de.primeapi.primeplugins.skypvp.managers.NPCManager;
 import de.primeapi.primeplugins.skypvp.messages.MessageManager;
 import de.primeapi.primeplugins.skypvp.util.ItemStackSerializer;
 import de.primeapi.primeplugins.skypvp.util.LocationSerializer;
+import de.primeapi.primeplugins.spigotapi.PrimeCore;
 import de.primeapi.primeplugins.spigotapi.api.command.reflections.CommandHandler;
 import lombok.Getter;
 import lombok.SneakyThrows;
@@ -90,7 +91,7 @@ public class SkyPvP extends JavaPlugin {
 		                             WarpCommand.class, SpawnCommand.class, PlotWorldCommand.class,
 		                             NPCCommand.class, TeleportCommand.class, TPHereCommand.class, HealCommand.class,
 		                             FeedCommand.class, EditItemCommand.class, EnderchestCommand.class,
-		                             RegionCommand.class, BuildCommand.class
+		                             RegionCommand.class, BuildCommand.class, StatsCommand.class
 		                            );
 		Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
 		Bukkit.getPluginManager().registerEvents(new QuitListener(), this);
@@ -98,6 +99,17 @@ public class SkyPvP extends JavaPlugin {
 		Bukkit.getPluginManager().registerEvents(new EntityDamageListener(), this);
 		Bukkit.getPluginManager().registerEvents(new EntityDamageByEntityListener(), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerDeathListener(), this);
+
+		PrimeCore.getInstance().getDb().update(
+				"CREATE TABLE IF NOT EXISTS prime_skypvp_stats (" +
+						"`id` INT NOT NULL AUTO_INCREMENT UNIQUE ," +
+						"`uuid` VARCHAR(36) NOT NULL," +
+						"`type` VARCHAR(16) NOT NULL," +
+						"`amount` INT NOT NULL," +
+						"`time` BIGINT NOT NULL," +
+						"PRIMARY KEY (`id`)" +
+						");"
+		                                      ).execute();
 
 
 	}
