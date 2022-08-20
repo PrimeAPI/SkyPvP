@@ -96,6 +96,13 @@ public enum Message {
 	KIT_DELETE_SUCCESS("§7 Kit erfolreich gelöscht!", true),
 	KIT_GIVING_TIMEOUT("§7 Du kannst dieses Kit erst in §e%date% §ewieder erhalten!", true),
 
+	VANISH_SELF_ON("§7 Du bist nun §aunsichtbar§7!", true),
+	VANISH_SELF_OFF("§7 Du bist nun nicht mehr §cunsichtbar§7!", true),
+	VANISH_OTHER_ON("§7 §e%name% ist nun §aunsichtbar§7!", true),
+	VANISH_OTHER_OFF("§7 §e%name% ist nun nicht mehr §cunsichtbar§7!", true),
+	VANISH_LIST_TITLE("§7 Unsichtbare Spieler: ", true),
+	VANISH_LIST_ENTRY("§7 - §e%name%", true),
+
 
 	PLACEHOLDER("DO NOT TOUCH", false);
 

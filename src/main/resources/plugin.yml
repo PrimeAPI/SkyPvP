@@ -31,3 +31,6 @@ commands:
   build:
   stats:
   kit:
+  vanish:
+    aliases:
+      - v
