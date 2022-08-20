@@ -1,5 +1,6 @@
 package de.primeapi.primeplugins.skypvp.listeners;
 
+import de.primeapi.primeplugins.skypvp.data.oop.subclasses.KitStorage;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.WarpStorage;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,6 +18,13 @@ public class JoinListener implements Listener {
 	public void onJoin(PlayerJoinEvent event) {
 		event.setJoinMessage(null);
 		event.getPlayer().teleport(WarpStorage.getInstance().getSpawn().getLocation());
+
+		if(!event.getPlayer().hasPlayedBefore()){
+			KitStorage.getInstance().kits.stream().filter(kit -> kit.getName().equalsIgnoreCase("start"))
+					.findFirst().ifPresent(kit -> {
+						event.getPlayer().getInventory().addItem(kit.getItemStack(1));
+			          });
+		}
 	}
 
 	@EventHandler

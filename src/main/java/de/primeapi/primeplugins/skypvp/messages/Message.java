@@ -91,6 +91,11 @@ public enum Message {
 
 	COMBAT_REMAINING("§7 Du bist noch für §e%sec% Sekunden §7im Kampf!", true),
 
+	KIT_SETUP_SUCCESS("§7 Du hast erfolgreich das Kit §e%display% §7erstellt!", true),
+	KIT_NOTFOUND("§7 Dieses Kit existiert nicht!", true),
+	KIT_DELETE_SUCCESS("§7 Kit erfolreich gelöscht!", true),
+	KIT_GIVING_TIMEOUT("§7 Du kannst dieses Kit erst in §e%date% §ewieder erhalten!", true),
+
 
 	PLACEHOLDER("DO NOT TOUCH", false);
 

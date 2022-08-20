@@ -12,6 +12,7 @@ import de.primeapi.primeplugins.skypvp.commands.warp.WarpCommand;
 import de.primeapi.primeplugins.skypvp.data.DataProvider;
 import de.primeapi.primeplugins.skypvp.listeners.BlockListener;
 import de.primeapi.primeplugins.skypvp.listeners.JoinListener;
+import de.primeapi.primeplugins.skypvp.listeners.PlayerInteractListener;
 import de.primeapi.primeplugins.skypvp.listeners.QuitListener;
 import de.primeapi.primeplugins.skypvp.listeners.pvp.EntityDamageByEntityListener;
 import de.primeapi.primeplugins.skypvp.listeners.pvp.EntityDamageListener;
@@ -92,7 +93,8 @@ public class SkyPvP extends JavaPlugin {
 		                             WarpCommand.class, SpawnCommand.class, PlotWorldCommand.class,
 		                             NPCCommand.class, TeleportCommand.class, TPHereCommand.class, HealCommand.class,
 		                             FeedCommand.class, EditItemCommand.class, EnderchestCommand.class,
-		                             RegionCommand.class, BuildCommand.class, StatsCommand.class
+		                             RegionCommand.class, BuildCommand.class, StatsCommand.class,
+		                             KitCommand.class
 		                            );
 		Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
 		Bukkit.getPluginManager().registerEvents(new QuitListener(), this);
@@ -100,6 +102,7 @@ public class SkyPvP extends JavaPlugin {
 		Bukkit.getPluginManager().registerEvents(new EntityDamageListener(), this);
 		Bukkit.getPluginManager().registerEvents(new EntityDamageByEntityListener(), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerDeathListener(), this);
+		Bukkit.getPluginManager().registerEvents(new PlayerInteractListener(), this);
 
 		PrimeCore.getInstance().getDb().update(
 				"CREATE TABLE IF NOT EXISTS prime_skypvp_stats (" +
@@ -108,6 +111,15 @@ public class SkyPvP extends JavaPlugin {
 						"`type` VARCHAR(16) NOT NULL," +
 						"`amount` INT NOT NULL," +
 						"`time` BIGINT NOT NULL," +
+						"PRIMARY KEY (`id`)" +
+						");"
+		                                      ).execute();
+		PrimeCore.getInstance().getDb().update(
+				"CREATE TABLE IF NOT EXISTS prime_skypvp_timeout (" +
+						"`id` INT NOT NULL AUTO_INCREMENT UNIQUE ," +
+						"`uuid` VARCHAR(36) NOT NULL," +
+						"`name` VARCHAR(64) NOT NULL," +
+						"`release` BIGINT NOT NULL," +
 						"PRIMARY KEY (`id`)" +
 						");"
 		                                      ).execute();

@@ -1,5 +1,6 @@
 package de.primeapi.primeplugins.skypvp.data.oop;
 
+import de.primeapi.primeplugins.skypvp.data.oop.subclasses.KitStorage;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.NPCStorage;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.RegionStorage;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.WarpStorage;
@@ -17,6 +18,7 @@ public class Storage {
 	WarpStorage warpStorage = new WarpStorage();
 	NPCStorage npcStorage = new NPCStorage();
 	RegionStorage regionStorage = new RegionStorage();
+	KitStorage kitStorage = new KitStorage();
 	public Storage() {
 		instance = this;
 	}
