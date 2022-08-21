@@ -34,3 +34,6 @@ commands:
   vanish:
     aliases:
       - v
+  head:
+    aliases:
+      - kopf

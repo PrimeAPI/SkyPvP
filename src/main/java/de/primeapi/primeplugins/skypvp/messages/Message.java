@@ -102,6 +102,8 @@ public enum Message {
 	VANISH_OTHER_OFF("§7 §e%name% ist nun nicht mehr §cunsichtbar§7!", true),
 	VANISH_LIST_TITLE("§7 Unsichtbare Spieler: ", true),
 	VANISH_LIST_ENTRY("§7 - §e%name%", true),
+	HEAD_TIMEOUT("§7 Du kannst dieses Command erst in §e%date% §7wieder benutzen!", true),
+	HEAD_SUCCESS("§7 Du hast den Kopf von §e%name% erhalten!", true),
 
 
 	PLACEHOLDER("DO NOT TOUCH", false);

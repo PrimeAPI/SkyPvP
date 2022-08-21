@@ -4,6 +4,7 @@ import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import de.primeapi.primeplugins.skypvp.actionbar.ActionBarManager;
 import de.primeapi.primeplugins.skypvp.api.annotations.GsonIgnore;
 import de.primeapi.primeplugins.skypvp.commands.*;
 import de.primeapi.primeplugins.skypvp.commands.warp.PlotWorldCommand;
@@ -94,7 +95,7 @@ public class SkyPvP extends JavaPlugin {
 		                             NPCCommand.class, TeleportCommand.class, TPHereCommand.class, HealCommand.class,
 		                             FeedCommand.class, EditItemCommand.class, EnderchestCommand.class,
 		                             RegionCommand.class, BuildCommand.class, StatsCommand.class,
-		                             KitCommand.class, VanishCommand.class
+		                             KitCommand.class, VanishCommand.class, HeadCommand.class
 		                            );
 		Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
 		Bukkit.getPluginManager().registerEvents(new QuitListener(), this);
@@ -125,6 +126,9 @@ public class SkyPvP extends JavaPlugin {
 		                                      ).execute();
 
 		PrimeCore.getInstance().getScoreboardManager().defaultSettings = new SkyPvPScoreboard();
+
+
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, ActionBarManager::loop, 20L, 20L);
 
 
 	}

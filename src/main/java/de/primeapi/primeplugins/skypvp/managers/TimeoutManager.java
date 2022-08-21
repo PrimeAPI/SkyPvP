@@ -18,7 +18,8 @@ public class TimeoutManager {
 		return PrimeCore.getInstance().getDb().select("SELECT `release` FROM prime_skypvp_timeout WHERE uuid = ? AND name = ?")
 				.parameters(uuid.toString(), name)
 				.execute(Long.class)
-				.get();
+				.get()
+				.map(aLong -> aLong == null ? -1L :aLong);
 	}
 
 	public static void resetTimeout(UUID uuid, String name){
