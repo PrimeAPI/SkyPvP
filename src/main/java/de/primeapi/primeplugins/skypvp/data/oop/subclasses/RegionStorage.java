@@ -2,10 +2,12 @@ package de.primeapi.primeplugins.skypvp.data.oop.subclasses;
 
 import de.primeapi.primeplugins.skypvp.api.annotations.GsonIgnore;
 import lombok.Data;
+import lombok.NonNull;
 import org.bukkit.Location;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author Lukas S. PrimeAPI
@@ -36,8 +38,8 @@ public class RegionStorage {
 		plot.remove(entry);
 	}
 
-	public boolean isPlot(Location entry) {
-		return plot.stream().anyMatch(location -> location.getWorld().equals(entry.getWorld()));
+	public boolean isPlot(@NonNull Location entry) {
+		return plot.stream().filter(location -> Objects.nonNull(location.getWorld())).anyMatch(location -> location.getWorld().equals(entry.getWorld()));
 	}
 
 	public void addFarm(Location entry) {

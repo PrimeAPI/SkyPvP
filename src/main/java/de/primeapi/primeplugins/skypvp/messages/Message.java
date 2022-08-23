@@ -105,6 +105,10 @@ public enum Message {
 	HEAD_TIMEOUT("§7 Du kannst dieses Command erst in §e%date% §7wieder benutzen!", true),
 	HEAD_SUCCESS("§7 Du hast den Kopf von §e%name% erhalten!", true),
 
+	GIVE_ITEM_SUCCESS("§7 Du hast §e%item% §7erfolgreich gegeben!", true),
+	GIVE_ITEM_SELECT("§7 Klicke auf ein Item in deinem Inventar", true),
+	GIVE_ITEM_PLAYER("§7 Alle haben ein §eItem §aerhalten§7!", true),
+
 
 	PLACEHOLDER("DO NOT TOUCH", false);
 

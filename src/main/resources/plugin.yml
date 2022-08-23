@@ -37,3 +37,4 @@ commands:
   head:
     aliases:
       - kopf
+  giveitem:
