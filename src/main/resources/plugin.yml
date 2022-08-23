@@ -40,3 +40,4 @@ commands:
       - kopf
   giveitem:
   storage:
+  shop:

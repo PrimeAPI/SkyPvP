@@ -110,6 +110,13 @@ public enum Message {
 	GIVE_ITEM_PLAYER("§7 Alle haben ein §eItem §aerhalten§7!", true),
 
 
+	SHOP_ADD_SELECT_ITEM("§7 Klicke auf ein Item in deinem Inventar", true),
+	SHOP_ADD_CATEGORY_SUCCESS("§7 Kategorie erfolgreich hinzugefügt!", true),
+	SHOP_ADD_ITEM_SUCCESS("§7 Item erfolgreich hinzugefügt!", true),
+	SHOP_ADD_ITEM_FAIL("§c Kategorie nicht gefunden!", true),
+	SHOP_BUY_MONEY("§c Du hast nicht genügend Coins!", true),
+
+
 	PLACEHOLDER("DO NOT TOUCH", false);
 
 

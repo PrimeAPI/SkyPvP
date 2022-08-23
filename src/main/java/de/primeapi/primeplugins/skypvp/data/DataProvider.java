@@ -5,6 +5,7 @@ import de.primeapi.primeplugins.skypvp.data.oop.Storage;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.KitStorage;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.NPCStorage;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.RegionStorage;
+import de.primeapi.primeplugins.skypvp.data.oop.subclasses.ShopStorage;
 import lombok.Getter;
 
 import java.io.File;
@@ -50,6 +51,7 @@ public class DataProvider {
 		if (storage.getNpcStorage() == null) storage.setNpcStorage(new NPCStorage());
 		if (storage.getRegionStorage() == null) storage.setRegionStorage(new RegionStorage());
 		if (storage.getKitStorage() == null) storage.setKitStorage(new KitStorage());
+		if (storage.getShopStorage() == null) storage.setShopStorage(new ShopStorage());
 	}
 
 

@@ -93,7 +93,7 @@ public class SkyPvP extends JavaPlugin {
 		                             FeedCommand.class, EditItemCommand.class, EnderchestCommand.class,
 		                             RegionCommand.class, BuildCommand.class, StatsCommand.class,
 		                             KitCommand.class, VanishCommand.class, HeadCommand.class,
-		                             GiveItemCommand.class, StorageCommand.class
+		                             GiveItemCommand.class, StorageCommand.class, ShopCommand.class
 		                            );
 		Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
 		Bukkit.getPluginManager().registerEvents(new QuitListener(), this);
