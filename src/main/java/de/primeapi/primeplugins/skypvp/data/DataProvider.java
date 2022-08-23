@@ -38,7 +38,7 @@ public class DataProvider {
 	/**
 	 * Loads all crates stored in the folder
 	 */
-	private void loadData() throws IOException {
+	public void loadData() throws IOException {
 		File file = new File(PATH);
 		if (file.createNewFile()) {
 			this.storage = new Storage();

@@ -11,10 +11,7 @@ import de.primeapi.primeplugins.skypvp.commands.warp.PlotWorldCommand;
 import de.primeapi.primeplugins.skypvp.commands.warp.SpawnCommand;
 import de.primeapi.primeplugins.skypvp.commands.warp.WarpCommand;
 import de.primeapi.primeplugins.skypvp.data.DataProvider;
-import de.primeapi.primeplugins.skypvp.listeners.BlockListener;
-import de.primeapi.primeplugins.skypvp.listeners.JoinListener;
-import de.primeapi.primeplugins.skypvp.listeners.PlayerInteractListener;
-import de.primeapi.primeplugins.skypvp.listeners.QuitListener;
+import de.primeapi.primeplugins.skypvp.listeners.*;
 import de.primeapi.primeplugins.skypvp.listeners.pvp.EntityDamageByEntityListener;
 import de.primeapi.primeplugins.skypvp.listeners.pvp.EntityDamageListener;
 import de.primeapi.primeplugins.skypvp.listeners.pvp.PlayerDeathListener;
@@ -96,7 +93,7 @@ public class SkyPvP extends JavaPlugin {
 		                             FeedCommand.class, EditItemCommand.class, EnderchestCommand.class,
 		                             RegionCommand.class, BuildCommand.class, StatsCommand.class,
 		                             KitCommand.class, VanishCommand.class, HeadCommand.class,
-		                             GiveItemCommand.class
+		                             GiveItemCommand.class, StorageCommand.class
 		                            );
 		Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
 		Bukkit.getPluginManager().registerEvents(new QuitListener(), this);
@@ -105,6 +102,7 @@ public class SkyPvP extends JavaPlugin {
 		Bukkit.getPluginManager().registerEvents(new EntityDamageByEntityListener(), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerDeathListener(), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerInteractListener(), this);
+		Bukkit.getPluginManager().registerEvents(new WorldLoadListener(), this);
 
 		PrimeCore.getInstance().getDb().update(
 				"CREATE TABLE IF NOT EXISTS prime_skypvp_stats (" +

@@ -4,6 +4,7 @@ author: PrimeAPI
 main: de.primeapi.primeplugins.skypvp.SkyPvP
 softdepend:
   - PrimeCore
+load: POSTWORLD
 commands:
   skypvp:
   fly:
@@ -38,3 +39,4 @@ commands:
     aliases:
       - kopf
   giveitem:
+  storage:
