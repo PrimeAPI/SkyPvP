@@ -104,6 +104,7 @@ public class SkyPvP extends JavaPlugin {
 		Bukkit.getPluginManager().registerEvents(new PlayerDeathListener(), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerInteractListener(), this);
 		Bukkit.getPluginManager().registerEvents(new WorldLoadListener(), this);
+		Bukkit.getPluginManager().registerEvents(new WorldChangeListener(), this);
 
 		PrimeCore.getInstance().getDb().update(
 				"CREATE TABLE IF NOT EXISTS prime_skypvp_stats (" +
