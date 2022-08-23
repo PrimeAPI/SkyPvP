@@ -53,7 +53,7 @@ public class PerkCommand {
 				               );
 			} else if (state) {
 				builder.addItem(i + 9,
-				                new ItemBuilder(Material.INK_SACK, (byte) 1).setDisplayName("§cDeaktiviere diese Perk")
+				                new ItemBuilder(Material.INK_SACK, (byte) 10).setDisplayName("§cDeaktiviere diese Perk")
 				                                                            .build(), (player1, itemStack) -> {
 							PerkAdapter.updatePerk(player.getUniqueId(), perk, false);
 							gui(player);
@@ -61,7 +61,7 @@ public class PerkCommand {
 				               );
 			} else {
 				builder.addItem(i + 9,
-				                new ItemBuilder(Material.INK_SACK, (byte) 10).setDisplayName("§aAktiviere diese Perk")
+				                new ItemBuilder(Material.INK_SACK, (byte) 1).setDisplayName("§aAktiviere diese Perk")
 				                                                             .build(), (player1, itemStack) -> {
 							PerkAdapter.updatePerk(player.getUniqueId(), perk, true);
 							gui(player);
