@@ -31,7 +31,7 @@ public class RestartCommand {
 		Bukkit.broadcastMessage(Message.RESTART_BROADCAST.replace("sec", countdown).getContent());
 		id = Bukkit.getScheduler().scheduleSyncRepeatingTask(SkyPvP.getInstance(), () -> {
 			countdown--;
-			if (countdown == 0) {
+			if (countdown <= 0) {
 				for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
 					onlinePlayer.kickPlayer(Message.RESTART_KICK.getContent());
 				}
