@@ -93,7 +93,8 @@ public class SkyPvP extends JavaPlugin {
 		                             FeedCommand.class, EditItemCommand.class, EnderchestCommand.class,
 		                             RegionCommand.class, BuildCommand.class, StatsCommand.class,
 		                             KitCommand.class, VanishCommand.class, HeadCommand.class,
-		                             GiveItemCommand.class, StorageCommand.class, ShopCommand.class, RestartCommand.class
+		                             GiveItemCommand.class, StorageCommand.class, ShopCommand.class, RestartCommand.class,
+		                             PerkCommand.class
 		                            );
 		Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
 		Bukkit.getPluginManager().registerEvents(new QuitListener(), this);
@@ -120,6 +121,15 @@ public class SkyPvP extends JavaPlugin {
 						"`uuid` VARCHAR(36) NOT NULL," +
 						"`name` VARCHAR(64) NOT NULL," +
 						"`release` BIGINT NOT NULL," +
+						"PRIMARY KEY (`id`)" +
+						");"
+		                                      ).execute();
+		PrimeCore.getInstance().getDb().update(
+				"CREATE TABLE IF NOT EXISTS prime_skypvp_perks (" +
+						"`id` INT NOT NULL AUTO_INCREMENT UNIQUE ," +
+						"`uuid` VARCHAR(36) NOT NULL," +
+						"`perk` VARCHAR(16) NOT NULL," +
+						"`active` INT NOT NULL," +
 						"PRIMARY KEY (`id`)" +
 						");"
 		                                      ).execute();

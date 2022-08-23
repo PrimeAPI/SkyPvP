@@ -2,6 +2,7 @@ package de.primeapi.primeplugins.skypvp.listeners;
 
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.KitStorage;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.WarpStorage;
+import de.primeapi.primeplugins.skypvp.sql.stats.PerkAdapter;
 import de.primeapi.primeplugins.skypvp.util.VanishUtils;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -27,6 +28,11 @@ public class JoinListener implements Listener {
 						event.getPlayer().getInventory().addItem(kit.getItemStack(1));
 			          });
 		}
+
+		PerkAdapter.preparePlayer(event.getPlayer(), () -> {
+			//TODO add perk usage
+		});
+
 	}
 
 	@EventHandler

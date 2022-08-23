@@ -3,6 +3,7 @@ package de.primeapi.primeplugins.skypvp.messages;
 import de.primeapi.primeplugins.spigotapi.api.PrimePlayer;
 import lombok.Getter;
 import lombok.Setter;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 @Getter
@@ -120,6 +121,11 @@ public enum Message {
 	RESTART_ABORT("§c§lRESTART §8● §7Der Restart wurde §aabgebrochen§7!", false),
 	RESTART_KICK("§7SkyPvP startet neu...", false),
 
+	PERK_ADMIN_PLAYER_NOT_FOUND("§c Der angegebene Spieler wurde nicht gefunden!", true),
+	PERK_ADMIN_PERK_NOT_FOUND("§c Das angegebene Perk wurde nicht gefunden!", true),
+	PERK_ADMIN_ADD_SUCCESS("§7 Perk erfolgreich hinzugefügt!", true),
+	PERK_ADMIN_GET_MESSAGE("§7 Status des Perks §e%perk%§7: §6%val%", true),
+
 
 	PLACEHOLDER("DO NOT TOUCH", false);
 
@@ -157,6 +163,9 @@ public enum Message {
 
 	public void send(Player player) {
 		player.sendMessage(getContent());
+	}
+	public void send(CommandSender sender) {
+		sender.sendMessage(getContent());
 	}
 
 	public void send(PrimePlayer primePlayer) {

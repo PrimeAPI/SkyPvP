@@ -45,3 +45,4 @@ commands:
     aliases:
       - restart
       - end
+  perk:
