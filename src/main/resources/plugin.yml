@@ -41,3 +41,7 @@ commands:
   giveitem:
   storage:
   shop:
+  stop:
+    aliases:
+      - restart
+      - end

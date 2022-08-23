@@ -116,6 +116,10 @@ public enum Message {
 	SHOP_ADD_ITEM_FAIL("§c Kategorie nicht gefunden!", true),
 	SHOP_BUY_MONEY("§c Du hast nicht genügend Coins!", true),
 
+	RESTART_BROADCAST("§c§lRESTART §8● §cSkyPvP wird in §e%sec% §cSekunden neugestartet!", false),
+	RESTART_ABORT("§c§lRESTART §8● §7Der Restart wurde §aabgebrochen§7!", false),
+	RESTART_KICK("§7SkyPvP startet neu...", false),
+
 
 	PLACEHOLDER("DO NOT TOUCH", false);
 
