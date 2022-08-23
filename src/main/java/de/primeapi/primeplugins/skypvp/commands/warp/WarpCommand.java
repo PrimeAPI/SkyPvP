@@ -37,9 +37,10 @@ public class WarpCommand {
 			return;
 		}
 		if (warpName == null) {
-			List<WarpStorage.WarpPoint> warps = new ArrayList<>(WarpStorage.getInstance().getWarps());
+			List<WarpStorage.WarpPoint> warps = new ArrayList<>();
 			warps.add(WarpStorage.getInstance().getSpawn());
 			warps.add(WarpStorage.getInstance().getPlot());
+			warps.addAll(WarpStorage.getInstance().getWarps());
 			warps = warps.stream()
 			             .filter(warpPoint -> warpPoint != null && warpPoint.getDisplay() != null)
 			             .collect(Collectors.toList());
