@@ -3,8 +3,8 @@ package de.primeapi.primeplugins.skypvp.listeners;
 import de.primeapi.primeplugins.skypvp.SkyPvP;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.KitStorage;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.WarpStorage;
-import de.primeapi.primeplugins.skypvp.sql.stats.Perk;
-import de.primeapi.primeplugins.skypvp.sql.stats.PerkAdapter;
+import de.primeapi.primeplugins.skypvp.sql.stats.perk.Perk;
+import de.primeapi.primeplugins.skypvp.sql.stats.perk.PerkAdapter;
 import de.primeapi.primeplugins.skypvp.util.VanishUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
@@ -37,12 +37,8 @@ public class JoinListener implements Listener {
 		PerkAdapter.preparePlayer(event.getPlayer(), () -> {
 			Bukkit.getScheduler().runTask(SkyPvP.getInstance(), () -> {
 				try {
-					if (Perk.FULL_BRIGHT.isActive(event.getPlayer())) {
-						event.getPlayer()
-						     .addPotionEffect(
-								     new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 1, false, false));
-					} else {
-						event.getPlayer().removePotionEffect(PotionEffectType.NIGHT_VISION);
+					for (Perk value : Perk.values()) {
+						value.check(event.getPlayer());
 					}
 				} catch (Exception e) {
 					e.printStackTrace();

@@ -1,7 +1,7 @@
-package de.primeapi.primeplugins.skypvp.sql.stats;
+package de.primeapi.primeplugins.skypvp.sql.stats.perk;
 
+import de.primeapi.primeplugins.skypvp.sql.stats.perk.Perk;
 import de.primeapi.primeplugins.spigotapi.PrimeCore;
-import de.primeapi.primeplugins.spigotapi.api.cache.Cache;
 import de.primeapi.util.sql.queries.Retriever;
 import org.bukkit.entity.Player;
 

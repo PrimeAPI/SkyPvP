@@ -1,6 +1,6 @@
 package de.primeapi.primeplugins.skypvp.listeners;
 
-import de.primeapi.primeplugins.skypvp.sql.stats.Perk;
+import de.primeapi.primeplugins.skypvp.sql.stats.perk.Perk;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

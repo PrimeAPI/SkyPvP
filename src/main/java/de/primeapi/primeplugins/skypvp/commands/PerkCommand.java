@@ -2,8 +2,8 @@ package de.primeapi.primeplugins.skypvp.commands;
 
 import de.primeapi.primeplugins.skypvp.SkyPvP;
 import de.primeapi.primeplugins.skypvp.messages.Message;
-import de.primeapi.primeplugins.skypvp.sql.stats.Perk;
-import de.primeapi.primeplugins.skypvp.sql.stats.PerkAdapter;
+import de.primeapi.primeplugins.skypvp.sql.stats.perk.Perk;
+import de.primeapi.primeplugins.skypvp.sql.stats.perk.PerkAdapter;
 import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.Command;
 import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.SenderField;
 import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.SingleAttribute;
@@ -39,6 +39,8 @@ public class PerkCommand {
 						if (state != null) {
 							PerkAdapter.updatePerk(player.getUniqueId(), perk, !state);
 							gui(player);
+							perk.check(player);
+							player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1, 1);
 						} else {
 							player.playSound(player.getLocation(), Sound.NOTE_BASS, 1, 1);
 						}
@@ -57,6 +59,8 @@ public class PerkCommand {
 				                                                            .build(), (player1, itemStack) -> {
 							PerkAdapter.updatePerk(player.getUniqueId(), perk, false);
 							gui(player);
+							perk.check(player);
+							player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1, 1);
 						}
 				               );
 			} else {
@@ -65,6 +69,8 @@ public class PerkCommand {
 				                                                             .build(), (player1, itemStack) -> {
 							PerkAdapter.updatePerk(player.getUniqueId(), perk, true);
 							gui(player);
+							perk.check(player);
+							player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1, 1);
 						}
 				               );
 			}
@@ -75,10 +81,8 @@ public class PerkCommand {
 				i++;
 			}
 		}
-		builder.animate(
-				player, GUIBuilder.createDefaultAnimationConfiguration(GUIBuilder.Animation.STAR),
-				SkyPvP.getInstance()
-		               );
+
+		player.openInventory(builder.build(SkyPvP.getInstance()));
 
 	}
 
