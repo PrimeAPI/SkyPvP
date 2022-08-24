@@ -4,10 +4,7 @@ import de.primeapi.primeplugins.skypvp.SkyPvP;
 import de.primeapi.primeplugins.skypvp.messages.Message;
 import de.primeapi.primeplugins.skypvp.sql.stats.perk.Perk;
 import de.primeapi.primeplugins.skypvp.sql.stats.perk.PerkAdapter;
-import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.Command;
-import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.SenderField;
-import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.SingleAttribute;
-import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.SubCommand;
+import de.primeapi.primeplugins.spigotapi.api.command.reflections.annotations.*;
 import de.primeapi.primeplugins.spigotapi.gui.GUIBuilder;
 import de.primeapi.primeplugins.spigotapi.gui.itembuilder.ItemBuilder;
 import de.primeapi.primeplugins.spigotapi.sql.SQLPlayer;
@@ -24,10 +21,10 @@ import org.bukkit.entity.Player;
 @Command(name = "perk")
 public class PerkCommand {
 
-	@SubCommand(name = "gui")
-	public void gui(@SenderField Player player) {
+	protected static void openGUI(Player player){
 		Perk[] perks = Perk.values();
-		int rows = (perks.length / 7) + 4;
+		int rows = (perks.length / 8) * 2;
+		rows += 4;
 		GUIBuilder builder = new GUIBuilder(rows * 9, "§e§lPerks").fillInventory();
 		int i = 10;
 
@@ -38,7 +35,7 @@ public class PerkCommand {
 					(player1, itemStack) -> {
 						if (state != null) {
 							PerkAdapter.updatePerk(player.getUniqueId(), perk, !state);
-							gui(player);
+							openGUI(player);
 							perk.check(player);
 							player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1, 1);
 						} else {
@@ -56,9 +53,9 @@ public class PerkCommand {
 			} else if (state) {
 				builder.addItem(i + 9,
 				                new ItemBuilder(Material.INK_SACK, (byte) 10).setDisplayName("§cDeaktiviere diese Perk")
-				                                                            .build(), (player1, itemStack) -> {
+				                                                             .build(), (player1, itemStack) -> {
 							PerkAdapter.updatePerk(player.getUniqueId(), perk, false);
-							gui(player);
+							openGUI(player);
 							perk.check(player);
 							player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1, 1);
 						}
@@ -66,9 +63,9 @@ public class PerkCommand {
 			} else {
 				builder.addItem(i + 9,
 				                new ItemBuilder(Material.INK_SACK, (byte) 1).setDisplayName("§aAktiviere diese Perk")
-				                                                             .build(), (player1, itemStack) -> {
+				                                                            .build(), (player1, itemStack) -> {
 							PerkAdapter.updatePerk(player.getUniqueId(), perk, true);
-							gui(player);
+							openGUI(player);
 							perk.check(player);
 							player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1, 1);
 						}
@@ -86,12 +83,17 @@ public class PerkCommand {
 
 	}
 
+	@SubCommand(name = "", priority = CommandPriority.LOW)
+	public void gui(@SenderField Player player) {
+		openGUI(player);
+	}
+
 
 	@SubCommand(name = "admin give <player> <perk>", permission = "skypvp.admin.give")
 	public void onGive(
 			@SenderField CommandSender sender,
-			@SingleAttribute(name = "player", required = true) String playerName,
-			@SingleAttribute(name = "perk", required = true) String perkName
+			@SingleAttribute(name = "player") String playerName,
+			@SingleAttribute(name = "perk") String perkName
 	                  ) {
 		SQLPlayer.loadPlayerByName(playerName).submit(sqlPlayer -> {
 			if (sqlPlayer == null) {
@@ -114,8 +116,8 @@ public class PerkCommand {
 	@SubCommand(name = "admin get <player> <perk>", permission = "skypvp.admin.get")
 	public void onGet(
 			@SenderField CommandSender sender,
-			@SingleAttribute(name = "player", required = true) String playerName,
-			@SingleAttribute(name = "perk", required = true) String perkName
+			@SingleAttribute(name = "player") String playerName,
+			@SingleAttribute(name = "perk") String perkName
 	                 ) {
 		SQLPlayer.loadPlayerByName(playerName).submit(sqlPlayer -> {
 			if (sqlPlayer == null) {

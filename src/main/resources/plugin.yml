@@ -46,3 +46,5 @@ commands:
       - restart
       - end
   perk:
+    aliases:
+      - perks
