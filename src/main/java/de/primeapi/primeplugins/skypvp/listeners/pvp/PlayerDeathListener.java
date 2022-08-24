@@ -4,6 +4,7 @@ import de.primeapi.primeplugins.skypvp.data.oop.subclasses.WarpStorage;
 import de.primeapi.primeplugins.skypvp.managers.CombatManager;
 import de.primeapi.primeplugins.skypvp.messages.Message;
 import de.primeapi.primeplugins.skypvp.sql.stats.StatsAdapter;
+import de.primeapi.primeplugins.skypvp.sql.stats.perk.Perk;
 import de.primeapi.primeplugins.spigotapi.api.plugins.coins.CoinsAPI;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -30,9 +31,13 @@ public class PlayerDeathListener implements Listener {
 		} else {
 			Player killer = player.getKiller();
 			StatsAdapter.addStatsEntry(killer.getUniqueId(), StatsAdapter.StatsEntry.KILL, 1);
-			CoinsAPI.getInstance().addCoins(killer.getUniqueId(), 50);
+			int coins = 50;
+			if(Perk.COIN_MULTIPLIER.isActive(killer)){
+				coins *= 1.5;
+			}
+			CoinsAPI.getInstance().addCoins(killer.getUniqueId(), coins);
 			Message.PVP_DEATH_PLAYER_KILLER.replace("name", killer.getDisplayName()).send(player);
-			Message.PVP_DEATH_KILLER.replace("name", killer.getDisplayName()).send(killer);
+			Message.PVP_DEATH_KILLER.replace("name", player.getDisplayName()).replace("coins", coins).send(killer);
 		}
 
 		event.setDeathMessage(null);

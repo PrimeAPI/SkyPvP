@@ -60,7 +60,7 @@ public enum Message {
 
 	PVP_DEATH_PLAYER_NOKILLER("§7 Du bist §cgestorben§7!", true),
 	PVP_DEATH_PLAYER_KILLER("§7 Du wurdest von §e%name% §7getötet§7!", true),
-	PVP_DEATH_KILLER("§7 Du hast §e%name%§a getötet§7! §8[§6+50 Coins§8]", true),
+	PVP_DEATH_KILLER("§7 Du hast §e%name%§a getötet§7! §8[§6+%coins% Coins§8]", true),
 
 	STATS_ERROR_NOTFOUND("§c Der angegebene Spieler wurde nicht gefunden!", true),
 
