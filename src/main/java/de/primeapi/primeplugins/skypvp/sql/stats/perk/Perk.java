@@ -55,13 +55,28 @@ public enum Perk {
 		}
 	}),
 	WATER_BREATHING("Wasser Atem", Material.WATER_BUCKET, (player, state) -> {
-
+		if(state){
+			player.addPotionEffect(
+					new PotionEffect(PotionEffectType.WATER_BREATHING, Integer.MAX_VALUE, 1, false, false));
+		}else {
+			player.removePotionEffect(PotionEffectType.WATER_BREATHING);
+		}
 	}),
 	FIRE_RESISTANCE("Feuerresistenz", Material.FLINT_AND_STEEL, (player, state) -> {
-
+		if(state){
+			player.addPotionEffect(
+					new PotionEffect(PotionEffectType.FIRE_RESISTANCE, Integer.MAX_VALUE, 1, false, false));
+		}else {
+			player.removePotionEffect(PotionEffectType.FIRE_RESISTANCE);
+		}
 	}),
 	HASTE("Schneller Abbauen", Material.GOLD_PICKAXE, (player, state) -> {
-
+		if(state){
+			player.addPotionEffect(
+					new PotionEffect(PotionEffectType.FAST_DIGGING, Integer.MAX_VALUE, 2, false, false));
+		}else {
+			player.removePotionEffect(PotionEffectType.FAST_DIGGING);
+		}
 	});
 
 
