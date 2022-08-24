@@ -1,12 +1,17 @@
 package de.primeapi.primeplugins.skypvp.listeners;
 
+import de.primeapi.primeplugins.skypvp.SkyPvP;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.KitStorage;
 import de.primeapi.primeplugins.skypvp.data.oop.subclasses.WarpStorage;
+import de.primeapi.primeplugins.skypvp.sql.stats.Perk;
 import de.primeapi.primeplugins.skypvp.sql.stats.PerkAdapter;
 import de.primeapi.primeplugins.skypvp.util.VanishUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.spigotmc.event.player.PlayerSpawnLocationEvent;
 
 /**
@@ -22,14 +27,28 @@ public class JoinListener implements Listener {
 		event.setJoinMessage(null);
 		event.getPlayer().teleport(WarpStorage.getInstance().getSpawn().getLocation());
 
-		if(!event.getPlayer().hasPlayedBefore()){
+		if (!event.getPlayer().hasPlayedBefore()) {
 			KitStorage.getInstance().kits.stream().filter(kit -> kit.getName().equalsIgnoreCase("start"))
-					.findFirst().ifPresent(kit -> {
-						event.getPlayer().getInventory().addItem(kit.getItemStack(1));
+			                             .findFirst().ifPresent(kit -> {
+				          event.getPlayer().getInventory().addItem(kit.getItemStack(1));
 			          });
 		}
 
 		PerkAdapter.preparePlayer(event.getPlayer(), () -> {
+			Bukkit.getScheduler().runTask(SkyPvP.getInstance(), () -> {
+				try {
+					if (Perk.FULL_BRIGHT.isActive(event.getPlayer())) {
+						event.getPlayer()
+						     .addPotionEffect(
+								     new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 1, false, false));
+					} else {
+						event.getPlayer().removePotionEffect(PotionEffectType.NIGHT_VISION);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			});
 			//TODO add perk usage
 		});
 
