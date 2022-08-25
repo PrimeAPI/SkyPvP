@@ -13,6 +13,8 @@ import org.bukkit.Sound;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Random;
+
 /**
  * @author Lukas S. PrimeAPI
  * created on 23.08.2022
@@ -46,13 +48,14 @@ public class PerkCommand {
 
 			if (state == null) {
 				builder.addItem(
-						i + 9, new ItemBuilder(Material.BARRIER).setDisplayName("§cDu besitzt diese Perk nicht")
+						i + 9, new ItemBuilder(Material.BARRIER).setDisplayName("§cDu besitzt diese Perk nicht ")
 						                                        .build(),
 						(player1, itemStack) -> player.playSound(player.getLocation(), Sound.NOTE_BASS, 1, 1)
 				               );
 			} else if (state) {
 				builder.addItem(i + 9,
 				                new ItemBuilder(Material.INK_SACK, (byte) 10).setDisplayName("§cDeaktiviere diese Perk")
+						                .addLore("§8" + perk.name())
 				                                                             .build(), (player1, itemStack) -> {
 							PerkAdapter.updatePerk(player.getUniqueId(), perk, false);
 							openGUI(player);
@@ -63,6 +66,7 @@ public class PerkCommand {
 			} else {
 				builder.addItem(i + 9,
 				                new ItemBuilder(Material.INK_SACK, (byte) 1).setDisplayName("§aAktiviere diese Perk")
+				                                                            .addLore("§8" + perk.name())
 				                                                            .build(), (player1, itemStack) -> {
 							PerkAdapter.updatePerk(player.getUniqueId(), perk, true);
 							openGUI(player);
